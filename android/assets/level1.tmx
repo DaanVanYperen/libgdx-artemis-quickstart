@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="20" height="15" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="Default" tilewidth="16" tileheight="16">
+  <image source="tiles.png" width="512" height="512"/>
+  <tile id="236">
+   <properties>
+    <property name="entity" value="chicklet"/>
+   </properties>
+  </tile>
+  <tile id="246">
+   <properties>
+    <property name="entity" value="slumberer"/>
+   </properties>
+  </tile>
+  <tile id="247">
+   <properties>
+    <property name="entity" value="player"/>
+   </properties>
+  </tile>
+  <tile id="297">
+   <properties>
+    <property name="entity" value="turnip"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Background" width="20" height="15">
+  <data encoding="base64" compression="zlib">
+   eJxrYWBgaBnFgwY3j+JRPIpxYgChtpnp
+  </data>
+ </layer>
+ <layer name="Background Detailing" width="20" height="15">
+  <data encoding="base64" compression="zlib">
+   eJylktlNw0AQhmc3tADhFWogIX7kaAAICPPkAA1wvS9HB1CAOTqABjgKAKQcZSSROB75FtvKysRHxEifPJ795/fMJiL/i5YS2YU92FejuiLXKrsviSU0y47ulPwMzuHCqc+Rz5fwS8c1PTdwC3cl+1fQrWZoH6k/wTO8OJqaFqnr36dZgAa5p//2Jzov0hjPyambHd7XYBO2oqdpwja5H5+twwY0HZ0faYzv5NSN/eYBtcN4lhNqx3CUOuNdqNvzsdHVEnxBmfu7xOMqwyeJDl6f8KElbEOe9h6vB8fvlfwN3p1aO/KynmEn9ptSI/Kij88AhmNmZuewWzBfXjCX3dXen/QKdigT7CjsaOeSb6c3b4ck+FYwTP2G0xWRGajCbGWyWZg/GKT8anjUYREaE/pxJ0G/4D/2A2sBT+k=
+  </data>
+ </layer>
+ <layer name="Platforms" width="20" height="15">
+  <data encoding="base64" compression="zlib">
+   eJxjYBhe4MdAO4AK4C0QqzAyMGgxEq8Hn3oWoDgrI0MDCwnmwfQgu4kU9xACC4F4ERHqQHZ+h7JV8Nh/EIgPEWEe1F9gGl94PATiR0SYBwKqRIbLUiqYhxwPR6FiyPHyFkqrIMWdKiOmGlhYwsIBFNcg80BxshiCG6CYAYkmmQ2Kk8MQvACJPnAYInfgMKr8ATSaAUktmA8AKu441Q==
+  </data>
+ </layer>
+</map>
