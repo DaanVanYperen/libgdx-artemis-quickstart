@@ -10,8 +10,10 @@
     <extend-configuration-property name="artemis.reflect.include" value="net.mostlyoriginal.api.component" />
     <extend-configuration-property name="artemis.reflect.include" value="net.mostlyoriginal.api.system" />
     <extend-configuration-property name="artemis.reflect.include" value="net.mostlyoriginal.api.step" />
+    <extend-configuration-property name="artemis.reflect.include" value="net.mostlyoriginal.api.manager" />
     <extend-configuration-property name="artemis.reflect.include" value="net.mostlyoriginal.game.component" />
     <extend-configuration-property name="artemis.reflect.include" value="net.mostlyoriginal.game.system" />
+    <extend-configuration-property name="artemis.reflect.include" value="net.mostlyoriginal.game.manager" />
 
     <!-- Any classes that require reflection on the libgdx side should use this -->
     <extend-configuration-property name="gdx.reflect.include" value="net.mostlyoriginal.api.step" />

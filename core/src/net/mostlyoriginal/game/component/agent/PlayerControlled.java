@@ -1,4 +1,4 @@
-package net.mostlyoriginal.game.component.control;
+package net.mostlyoriginal.game.component.agent;
 
 import com.artemis.Component;
 

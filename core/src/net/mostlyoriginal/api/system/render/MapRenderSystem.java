@@ -7,7 +7,7 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import net.mostlyoriginal.api.system.camera.CameraSystem;
-import net.mostlyoriginal.game.system.TiledMapSystem;
+import net.mostlyoriginal.api.system.map.TiledMapSystem;
 
 /**
  * Renders tiled map with libgdx.7

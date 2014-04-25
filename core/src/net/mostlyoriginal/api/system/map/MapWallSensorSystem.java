@@ -10,7 +10,6 @@ import net.mostlyoriginal.api.component.basic.Pos;
 import net.mostlyoriginal.api.component.map.MapWallSensor;
 import net.mostlyoriginal.api.component.physics.Physics;
 import net.mostlyoriginal.api.utils.MapMask;
-import net.mostlyoriginal.game.system.TiledMapSystem;
 
 /**
  * Detects entity proximity to solid tiles.

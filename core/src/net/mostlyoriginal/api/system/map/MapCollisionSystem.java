@@ -6,13 +6,11 @@ import com.artemis.Entity;
 import com.artemis.annotations.Wire;
 import com.artemis.systems.EntityProcessingSystem;
 import net.mostlyoriginal.api.component.basic.Bounds;
+import net.mostlyoriginal.api.component.basic.Pos;
 import net.mostlyoriginal.api.component.map.MapSolid;
 import net.mostlyoriginal.api.component.physics.Physics;
-import net.mostlyoriginal.api.component.basic.Pos;
 import net.mostlyoriginal.api.system.camera.CameraSystem;
-import net.mostlyoriginal.game.system.AssetSystem;
 import net.mostlyoriginal.api.utils.MapMask;
-import net.mostlyoriginal.game.system.TiledMapSystem;
 
 /**
  * Constrain entities by map collision layer.
@@ -31,7 +29,6 @@ import net.mostlyoriginal.game.system.TiledMapSystem;
 public class MapCollisionSystem extends EntityProcessingSystem {
 
     private TiledMapSystem mapSystem;
-    private AssetSystem assetSystem;
     private CameraSystem cameraSystem;
 
     private boolean initialized;

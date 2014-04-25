@@ -11,7 +11,7 @@ import net.mostlyoriginal.api.component.basic.Bounds;
 import net.mostlyoriginal.api.component.basic.Pos;
 import net.mostlyoriginal.api.component.graphics.Anim;
 import net.mostlyoriginal.api.component.script.EntitySpawner;
-import net.mostlyoriginal.game.system.EntityFactorySystem;
+import net.mostlyoriginal.api.manager.AbstractEntityFactorySystem;
 
 /**
  * Randomly spawn entity from list.
@@ -28,7 +28,7 @@ public class EntitySpawnerSystem extends EntityProcessingSystem {
     private ComponentMapper<Bounds> bm;
     private ComponentMapper<Anim> am;
 
-    private EntityFactorySystem entityFactorySystem;
+    private AbstractEntityFactorySystem entityFactorySystem;
 
     public EntitySpawnerSystem() {
         super(Aspect.getAspectForAll(EntitySpawner.class, Pos.class, Bounds.class));

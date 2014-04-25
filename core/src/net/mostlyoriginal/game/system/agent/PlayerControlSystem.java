@@ -1,4 +1,4 @@
-package net.mostlyoriginal.game.system;
+package net.mostlyoriginal.game.system.agent;
 
 import com.artemis.Aspect;
 import com.artemis.ComponentMapper;
@@ -13,7 +13,7 @@ import net.mostlyoriginal.api.component.basic.Angle;
 import net.mostlyoriginal.api.component.graphics.Anim;
 import net.mostlyoriginal.api.component.map.MapWallSensor;
 import net.mostlyoriginal.api.component.physics.Physics;
-import net.mostlyoriginal.game.component.control.PlayerControlled;
+import net.mostlyoriginal.game.component.agent.PlayerControlled;
 
 /**
  * @author Daan van Yperen

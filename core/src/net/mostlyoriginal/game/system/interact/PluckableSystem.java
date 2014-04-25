@@ -8,17 +8,17 @@ import com.artemis.managers.TagManager;
 import com.artemis.systems.EntityProcessingSystem;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import net.mostlyoriginal.api.component.graphics.Anim;
 import net.mostlyoriginal.api.component.basic.Bounds;
-import net.mostlyoriginal.api.component.physics.Frozen;
 import net.mostlyoriginal.api.component.basic.Pos;
+import net.mostlyoriginal.api.component.graphics.Anim;
+import net.mostlyoriginal.api.component.physics.Frozen;
 import net.mostlyoriginal.api.component.physics.Physics;
 import net.mostlyoriginal.api.system.physics.CollisionSystem;
 import net.mostlyoriginal.api.system.physics.PhysicsSystem;
 import net.mostlyoriginal.api.system.render.AnimRenderSystem;
 import net.mostlyoriginal.api.utils.TagEntityReference;
 import net.mostlyoriginal.game.component.interact.Pluckable;
-import net.mostlyoriginal.game.system.EntityFactorySystem;
+import net.mostlyoriginal.game.manager.EntityFactorySystem;
 
 /**
  * Allows players to pluck entities from the ground.
@@ -94,7 +94,7 @@ public class PluckableSystem extends EntityProcessingSystem {
                 }
 
 
-                // @todo write this up as a script.
+                // @todo write this up as a script. Particle spawning should be part of the animation
                 sweatDropletCooldown -= world.delta;
                 if ( sweatDropletCooldown < 0 )
                 {

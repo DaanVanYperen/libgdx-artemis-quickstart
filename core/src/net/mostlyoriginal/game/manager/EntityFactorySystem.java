@@ -1,9 +1,8 @@
-package net.mostlyoriginal.game.system;
+package net.mostlyoriginal.game.manager;
 
 import com.artemis.Entity;
 import com.artemis.annotations.Wire;
 import com.artemis.managers.TagManager;
-import com.artemis.systems.VoidEntitySystem;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.MapProperties;
@@ -17,24 +16,28 @@ import net.mostlyoriginal.api.component.map.MapSolid;
 import net.mostlyoriginal.api.component.map.MapWallSensor;
 import net.mostlyoriginal.api.component.physics.*;
 import net.mostlyoriginal.api.component.script.Schedule;
+import net.mostlyoriginal.api.manager.AbstractAssetSystem;
+import net.mostlyoriginal.api.manager.AbstractEntityFactorySystem;
 import net.mostlyoriginal.api.utils.SafeEntityReference;
 import net.mostlyoriginal.api.utils.TagEntityReference;
 import net.mostlyoriginal.game.MainScreen;
-import net.mostlyoriginal.game.component.Slumberer;
-import net.mostlyoriginal.game.component.control.PlayerControlled;
+import net.mostlyoriginal.game.component.agent.Slumberer;
+import net.mostlyoriginal.game.component.agent.PlayerControlled;
 import net.mostlyoriginal.game.component.interact.Pluckable;
 
 /**
  * Game specific entity factory.
  *
+ * @todo transform this into a manager.
  * @author Daan van Yperen
  */
 @Wire
-public class EntityFactorySystem extends VoidEntitySystem {
+public class EntityFactorySystem extends AbstractEntityFactorySystem {
 
     private TagManager tagManager;
-    private AssetSystem assetSystem;
+    private AbstractAssetSystem abstractAssetSystem;
 
+    @Override
     public Entity createEntity(String entity, int cx, int cy, MapProperties properties) {
         switch (entity) {
             case "player":
@@ -93,7 +96,7 @@ public class EntityFactorySystem extends VoidEntitySystem {
         physics.vy = MathUtils.random(50, 110)*1.5f;
         physics.friction = 0.1f;
 
-        final TextureRegion frame = assetSystem.get(animId).getKeyFrame(0);
+        final TextureRegion frame = abstractAssetSystem.get(animId).getKeyFrame(0);
 
         return basicCenteredParticle(x, y, animId, 1, 1)
                 .addComponent(new Schedule().wait(1f).deleteFromWorld())
@@ -116,7 +119,7 @@ public class EntityFactorySystem extends VoidEntitySystem {
         anim.speed=speed;
         anim.color.a= 0.9f;
 
-        TextureRegion frame = assetSystem.get(animId).getKeyFrame(0);
+        TextureRegion frame = abstractAssetSystem.get(animId).getKeyFrame(0);
 
         return world.createEntity()
                 .addComponent(new Pos(x - ((frame.getRegionWidth() * anim.scale) / 2), y - (frame.getRegionHeight() * anim.scale) / 2))
@@ -166,7 +169,4 @@ public class EntityFactorySystem extends VoidEntitySystem {
                 .addComponent(new Gravity());
     }
 
-    @Override
-    protected void processSystem() {
-    }
 }

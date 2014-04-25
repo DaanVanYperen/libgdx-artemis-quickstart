@@ -14,14 +14,18 @@ import net.mostlyoriginal.api.system.camera.EntityCameraSystem;
 import net.mostlyoriginal.api.system.interact.AimSystem;
 import net.mostlyoriginal.api.system.map.MapCollisionSystem;
 import net.mostlyoriginal.api.system.map.MapWallSensorSystem;
+import net.mostlyoriginal.api.system.map.TiledMapSystem;
 import net.mostlyoriginal.api.system.mouse.MouseCursorSystem;
 import net.mostlyoriginal.api.system.physics.*;
 import net.mostlyoriginal.api.system.render.AnimRenderSystem;
 import net.mostlyoriginal.api.system.render.MapRenderSystem;
 import net.mostlyoriginal.api.system.script.EntitySpawnerSystem;
 import net.mostlyoriginal.api.system.script.SchedulerSystem;
-import net.mostlyoriginal.game.system.*;
+import net.mostlyoriginal.game.manager.AssetSystem;
+import net.mostlyoriginal.game.system.agent.PlayerControlSystem;
+import net.mostlyoriginal.game.system.agent.SlumbererSystem;
 import net.mostlyoriginal.game.system.interact.PluckableSystem;
+import net.mostlyoriginal.game.manager.EntityFactorySystem;
 
 /**
  * @author Daan van Yperen

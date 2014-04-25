@@ -1,4 +1,4 @@
-package net.mostlyoriginal.game.system;
+package net.mostlyoriginal.game.system.agent;
 
 import com.artemis.Aspect;
 import com.artemis.ComponentMapper;
@@ -8,7 +8,7 @@ import com.artemis.managers.TagManager;
 import com.artemis.systems.EntityProcessingSystem;
 import com.badlogic.gdx.math.MathUtils;
 import net.mostlyoriginal.api.component.graphics.Anim;
-import net.mostlyoriginal.game.component.Slumberer;
+import net.mostlyoriginal.game.component.agent.Slumberer;
 
 /**
  * @author Daan van Yperen

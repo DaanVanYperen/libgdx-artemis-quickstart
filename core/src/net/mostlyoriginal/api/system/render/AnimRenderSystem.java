@@ -15,8 +15,8 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import net.mostlyoriginal.api.component.basic.Angle;
 import net.mostlyoriginal.api.component.basic.Pos;
 import net.mostlyoriginal.api.component.graphics.Anim;
+import net.mostlyoriginal.api.manager.AbstractAssetSystem;
 import net.mostlyoriginal.api.system.camera.CameraSystem;
-import net.mostlyoriginal.game.system.AssetSystem;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -36,7 +36,7 @@ public class AnimRenderSystem extends EntitySystem {
     private ComponentMapper<Anim> sm;
     private ComponentMapper<Angle> rm;
     private CameraSystem cameraSystem;
-    private AssetSystem assetSystem;
+    private AbstractAssetSystem abstractAssetSystem;
 
     private SpriteBatch batch;
     private final List<Entity> sortedEntities = new ArrayList<Entity>();
@@ -101,7 +101,7 @@ public class AnimRenderSystem extends EntitySystem {
         // don't support backwards yet.
         if ( animation.age < 0 ) return;
 
-        final com.badlogic.gdx.graphics.g2d.Animation gdxanim = assetSystem.get(id);
+        final com.badlogic.gdx.graphics.g2d.Animation gdxanim = abstractAssetSystem.get(id);
         if ( gdxanim == null) return;
 
         final TextureRegion frame = gdxanim.getKeyFrame(animation.age, animation.loop);

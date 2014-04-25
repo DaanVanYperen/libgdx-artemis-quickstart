@@ -1,4 +1,4 @@
-package net.mostlyoriginal.game.system;
+package net.mostlyoriginal.api.system.map;
 
 /**
  * @author Daan van Yperen
@@ -11,6 +11,7 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.utils.Array;
+import net.mostlyoriginal.api.manager.AbstractEntityFactorySystem;
 import net.mostlyoriginal.api.utils.MapMask;
 
 /**
@@ -23,7 +24,7 @@ public class TiledMapSystem extends VoidEntitySystem {
 
     private final String mapFilename;
 
-    private EntityFactorySystem entityFactorySystem;
+    private AbstractEntityFactorySystem entityFactorySystem;
     public TiledMap map;
 
     private int width;
