@@ -15,12 +15,6 @@ allprojects {
     apply plugin: "eclipse"
     apply plugin: "idea"
 
-    idea {
-      project {
-        languageLevel = '1.7'
-      }
-    }
-
     version = '1.0'
     ext {
         appName = 'GameTemplate'
@@ -109,4 +103,11 @@ project(":core") {
 
 tasks.eclipse.doLast {
     delete ".project"
+}
+
+idea {
+    project {
+        jdkName = '1.7'
+        languageLevel = '1.7'
+    }
 }
