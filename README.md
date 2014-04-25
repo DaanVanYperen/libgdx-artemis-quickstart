@@ -7,10 +7,40 @@ Contains a very basic game that demos some typical systems and components.
 
 [Play Slumber here](http://www.mostlyoriginal.net/play-slumber/)
 
-=== Quick start ===
+=== When to use this ===
 
-1. Configure resolution in G.java
-2. Load your assets by extending ```AssetSystem.java```
-3. Entity factory can be found in ```EntityFactorySystem.java```
-3. Disable example systems in ```MainScreen.java```
-4. Add your game specific systems to ```MainScreen.java```
+If you want artemis-odb with LibGDX's new gradle setup, or you need
+some quick ideas for an entry level component/system setup, a fork
+will get you up and running quickly.
+
+I use this as my launchpad for jam games. You are welcome to use
+it for whatever you need. I might separate the component/systems
+into a library later, no guarantees. ;)
+
+=== Library Versions ===
+
+LibGDX 1.0.0 and Artemis-ODB 0.5.1-SNAPSHOT
+(LibGDX version can be changed in /build.gradle)
+
+Tested for desktop:dist and html:dist targets. Others targets might function too. ;)
+
+=== Organization ===
+
+net.mostlyoriginal.api contains all generic example components/systems.
+net.mostlyoriginal.game contains an example game.
+
+- Entrypoint for your game is ```net.mostlyoriginal.game.MyGame```
+- Configure and add systems in ```net.mostlyoriginal.game.MainScreen```
+- Resolution can be changed in G.java
+
+=== Special note on Reflection ===
+
+GWT lacks reflection so the build process creates a reflection cache. To use
+```@Wire``` make sure your components, managers and systems are placed under
+the premade component, manager and system packages.
+
+Artemis does not share libgdx's reflection cache, so if you get gwt reflection
+related errors you might need to add classes to Libgdx's cache manually.
+Artemis reflection cache errors are prefixed with artemis-odb.
+
+```
