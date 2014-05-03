@@ -4,18 +4,14 @@ import com.artemis.Component;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Pool;
 import com.badlogic.gdx.utils.Pools;
-import net.mostlyoriginal.api.step.AddStep;
-import net.mostlyoriginal.api.step.DeleteFromWorldStep;
-import net.mostlyoriginal.api.step.RemoveStep;
-import net.mostlyoriginal.api.step.Step;
+import net.mostlyoriginal.api.step.*;
 
 /**
  * Schedules basic entity transformations.
  *
  * Can be used to schedule things like delayed component addition, entity removal or component removal.
- * Steps are pooled per type.
  *
- * entity.addComponent(new Schedule().wait(0.5f).add(new ExampleComponent()).wait(1.5f).remove(ExampleComponent.class).deleteFromWorld());
+ * entity.addComponent(new Schedule().wait(0.5f).add(new ExampleComponent()).changedInWorld().wait(1.5f).remove(ExampleComponent.class).changedInWorld().wait(5).deleteFromWorld());
  *
  * @author Daan van Yperen
  * @see net.mostlyoriginal.api.system.script.SchedulerSystem
@@ -41,17 +37,26 @@ public class Schedule extends Component {
         return node;
     }
 
+    /** Delay next steps for delaySeconds. */
     public Schedule wait(float delaySeconds)
     {
         this.atAge += delaySeconds;
         return this;
     }
 
+    /** Delete entity from world. */
     public Schedule deleteFromWorld() {
         steps.add(prepare(DeleteFromWorldStep.class, atAge));
         return this;
     }
 
+    /** Activate added components. */
+    public Schedule changedInWorld() {
+        steps.add(prepare(ChangedInWorldStep.class, atAge));
+        return this;
+    }
+
+    /** Add component to entity. Make sure to chain a call to changedInWorld after all your add/remove chains. */
     public Schedule add( final Component component ) {
         AddStep step = prepare(AddStep.class, atAge);
         step.component = component;
@@ -59,6 +64,7 @@ public class Schedule extends Component {
         return this;
     }
 
+    /** Remove component from entity. Make sure to chain a call to changedInWorld after all your add/remove chains. */
     public Schedule remove( final Class<? extends Component> component ) {
         RemoveStep step = prepare(RemoveStep.class, atAge);
         step.componentClass = component;
