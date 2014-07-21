@@ -3,6 +3,7 @@ package net.mostlyoriginal.game;
 import com.artemis.World;
 import com.artemis.managers.GroupManager;
 import com.artemis.managers.TagManager;
+import com.artemis.managers.UuidEntityManager;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
@@ -22,10 +23,10 @@ import net.mostlyoriginal.api.system.render.MapRenderSystem;
 import net.mostlyoriginal.api.system.script.EntitySpawnerSystem;
 import net.mostlyoriginal.api.system.script.SchedulerSystem;
 import net.mostlyoriginal.game.manager.AssetSystem;
+import net.mostlyoriginal.game.manager.EntityFactorySystem;
 import net.mostlyoriginal.game.system.agent.PlayerControlSystem;
 import net.mostlyoriginal.game.system.agent.SlumbererSystem;
 import net.mostlyoriginal.game.system.interact.PluckableSystem;
-import net.mostlyoriginal.game.manager.EntityFactorySystem;
 
 /**
  * @author Daan van Yperen
@@ -102,6 +103,7 @@ public class MainScreen implements Screen {
 
         world.setManager(new GroupManager());
         world.setManager(new TagManager());
+        world.setManager(new UuidEntityManager());
 
         /** UTILITY - PASSIVE */
 

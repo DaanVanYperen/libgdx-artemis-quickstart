@@ -19,7 +19,7 @@ allprojects {
     ext {
         appName = 'GameTemplate'
         // Uncomment if you want to use snapshots instead of stable.
-        gdxVersion = '1.0.0'
+        gdxVersion = '1.2.0'
         //gdxVersion = '1.0.1-SNAPSHOT'
         roboVMVersion = '0.0.11'
     }
@@ -84,9 +84,9 @@ project(":html") {
         compile "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion:sources"
 
         // Support for artemis-odb
-        compile "net.onedaybeard.artemis:artemis-odb-gwt:0.5.1-SNAPSHOT"
-        compile "net.onedaybeard.artemis:artemis-odb-gwt:0.5.1-SNAPSHOT:sources"
-        compile "net.onedaybeard.artemis:artemis-odb:0.5.1-SNAPSHOT:sources"
+        compile "net.onedaybeard.artemis:artemis-odb-gwt:0.6.5"
+        compile "net.onedaybeard.artemis:artemis-odb-gwt:0.6.5:sources"
+        compile "net.onedaybeard.artemis:artemis-odb:0.6.5:sources"
     }
 }
 
@@ -98,8 +98,8 @@ project(":core") {
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
 
         // Support for artemis-odb
-        compile "net.onedaybeard.artemis:artemis-odb:0.5.1-SNAPSHOT"
-        compile "net.onedaybeard.artemis:artemis-odb:0.5.1-SNAPSHOT:sources"
+        compile "net.onedaybeard.artemis:artemis-odb:0.6.5"
+        compile "net.onedaybeard.artemis:artemis-odb:0.6.5:sources"
     }
 }
 
