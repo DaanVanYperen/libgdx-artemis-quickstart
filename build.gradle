@@ -19,7 +19,7 @@ allprojects {
     ext {
         appName = 'GameTemplate'
         // Uncomment if you want to use snapshots instead of stable.
-        gdxVersion = '1.0.0'
+        gdxVersion = '1.2.0'
         //gdxVersion = '1.0.1-SNAPSHOT'
         roboVMVersion = '0.0.11'
     }
