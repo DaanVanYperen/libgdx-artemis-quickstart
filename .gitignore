@@ -58,3 +58,5 @@ nb-configuration.xml
 
 .gradle
 build/
+android/libs/armeabi-v7a/libgdx.so
+gradle/wrapper/gradle-wrapper.properties
