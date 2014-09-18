@@ -47,7 +47,7 @@ public class ColorAnimationSystem extends EntityProcessingSystem {
             if ( colorAnimation.duration <= 0 )
             {
                 animation.color.set(1f,1f,1f,1f);
-                entity.removeComponent(ColorAnimation.class).changedInWorld();
+                entity.edit().removeComponent(ColorAnimation.class);
             }
 
         }

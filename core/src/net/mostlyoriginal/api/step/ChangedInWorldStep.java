@@ -14,7 +14,6 @@ public class ChangedInWorldStep extends Step {
 
     @Override
     public boolean act(float delta, Entity e) {
-        e.changedInWorld();
         return true;
     }
 
