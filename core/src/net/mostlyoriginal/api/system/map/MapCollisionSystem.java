@@ -38,6 +38,7 @@ public class MapCollisionSystem extends EntityProcessingSystem {
     private ComponentMapper<Pos> pm;
     private ComponentMapper<Bounds> bm;
 
+	@SuppressWarnings("unchecked")
     public MapCollisionSystem() {
         super(Aspect.getAspectForAll(Physics.class, Pos.class, Bounds.class, MapSolid.class));
     }

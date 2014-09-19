@@ -22,6 +22,7 @@ public class AttachmentSystem extends EntityProcessingSystem {
     private ComponentMapper<Pos> pm;
     private ComponentMapper<Attached> am;
 
+	@SuppressWarnings("unchecked")
     public AttachmentSystem() {
         super(Aspect.getAspectForAll(Pos.class, Attached.class));
     }

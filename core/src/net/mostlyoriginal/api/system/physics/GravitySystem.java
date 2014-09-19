@@ -22,7 +22,8 @@ public class GravitySystem extends EntityProcessingSystem {
     ComponentMapper<Physics> pm;
     ComponentMapper<Gravity> gm;
 
-    public GravitySystem() {
+	@SuppressWarnings("unchecked")
+	public GravitySystem() {
         super(Aspect.getAspectForAll(Gravity.class, Physics.class));
     }
 

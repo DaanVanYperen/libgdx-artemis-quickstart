@@ -30,6 +30,7 @@ public class PlayerControlSystem extends EntityProcessingSystem {
     private ComponentMapper<MapWallSensor> sm;
     private float leapStrength;
 
+	@SuppressWarnings("unchecked")
     public PlayerControlSystem() {
         super(Aspect.getAspectForAll(PlayerControlled.class, Physics.class, MapWallSensor.class, Anim.class));
     }

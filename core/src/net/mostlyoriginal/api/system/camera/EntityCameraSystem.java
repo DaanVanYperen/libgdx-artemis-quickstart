@@ -20,6 +20,7 @@ public class EntityCameraSystem extends EntityProcessingSystem {
     private ComponentMapper<Pos> pm;
     private CameraSystem cameraSystem;
 
+	@SuppressWarnings("unchecked")
     public EntityCameraSystem() {
         super(Aspect.getAspectForAll(Pos.class, Camera.class));
     }

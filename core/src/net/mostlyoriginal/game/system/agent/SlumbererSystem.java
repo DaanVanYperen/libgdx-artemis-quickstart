@@ -19,6 +19,7 @@ public class SlumbererSystem extends EntityProcessingSystem {
     TagManager tagManager;
     ComponentMapper<Slumberer> sm;
     ComponentMapper<Anim> am;
+	@SuppressWarnings("unchecked")
     public SlumbererSystem() {
         super(Aspect.getAspectForAll(Slumberer.class));
     }

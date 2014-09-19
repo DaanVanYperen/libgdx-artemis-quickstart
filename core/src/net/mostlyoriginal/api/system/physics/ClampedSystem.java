@@ -35,6 +35,7 @@ public class ClampedSystem extends EntityProcessingSystem {
     /**
      * Creates a new EntityProcessingSystem.
      */
+    @SuppressWarnings("unchecked")
     public ClampedSystem() {
         super(Aspect.getAspectForAll(Pos.class, Clamped.class));
     }

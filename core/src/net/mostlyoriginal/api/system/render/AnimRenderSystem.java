@@ -51,7 +51,8 @@ public class AnimRenderSystem extends EntitySystem {
 
     private float age;
 
-    public AnimRenderSystem() {
+	@SuppressWarnings("unchecked")
+	public AnimRenderSystem() {
         super(Aspect.getAspectForAll(Pos.class, Anim.class));
         batch  = new SpriteBatch(2000);
     }

@@ -30,7 +30,8 @@ public class EntitySpawnerSystem extends EntityProcessingSystem {
 
     private AbstractEntityFactorySystem entityFactorySystem;
 
-    public EntitySpawnerSystem() {
+	@SuppressWarnings("unchecked")
+	public EntitySpawnerSystem() {
         super(Aspect.getAspectForAll(EntitySpawner.class, Pos.class, Bounds.class));
     }
 

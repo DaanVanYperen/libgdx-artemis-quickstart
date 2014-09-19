@@ -35,7 +35,8 @@ public class MapWallSensorSystem extends EntityProcessingSystem {
     private ComponentMapper<Bounds> bm;
     private ComponentMapper<MapWallSensor> ws;
 
-    public MapWallSensorSystem() {
+	@SuppressWarnings("unchecked")
+	public MapWallSensorSystem() {
         super(Aspect.getAspectForAll(MapWallSensor.class, Pos.class, Bounds.class));
     }
 

@@ -34,6 +34,7 @@ public class PhysicsSystem extends EntityProcessingSystem {
     private ComponentMapper<Angle> am;
     private ComponentMapper<MapWallSensor> wm;
 
+	@SuppressWarnings("unchecked")
     public PhysicsSystem() {
         super(Aspect.getAspectForAll(Physics.class, Pos.class));
     }

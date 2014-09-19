@@ -46,12 +46,12 @@ public class MapMask {
      */
     public boolean atScreen( final int x, final int y, boolean outOfBoundsResult)
     {
-        return atGrid((int)(x / tileWidth),(int)(y / tileHeight), outOfBoundsResult);
+        return atGrid(x / tileWidth, y / tileHeight, outOfBoundsResult);
     }
 
     public boolean atScreen( final float x, final float y, boolean outOfBoundsResult)
     {
-        return atGrid((int)((int)x / tileWidth),(int)((int)y / tileHeight), outOfBoundsResult);
+        return atGrid(((int)x / tileWidth),((int)y / tileHeight), outOfBoundsResult);
     }
 
     private void generate(Array<TiledMapTileLayer> layers, String propertyKey) {

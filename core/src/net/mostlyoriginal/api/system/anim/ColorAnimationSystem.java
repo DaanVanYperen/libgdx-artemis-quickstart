@@ -20,6 +20,7 @@ public class ColorAnimationSystem extends EntityProcessingSystem {
     ComponentMapper<Anim> am;
     ComponentMapper<ColorAnimation> cm;
 
+	@SuppressWarnings("unchecked")
     public ColorAnimationSystem() {
         super(Aspect.getAspectForAll(Anim.class, ColorAnimation.class));
     }

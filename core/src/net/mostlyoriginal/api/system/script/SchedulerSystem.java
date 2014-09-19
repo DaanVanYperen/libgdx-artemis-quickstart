@@ -20,7 +20,8 @@ public class SchedulerSystem extends EntityProcessingSystem {
 
     private ComponentMapper<Schedule> sm;
 
-    public SchedulerSystem() {
+	@SuppressWarnings("unchecked")
+	public SchedulerSystem() {
         super(Aspect.getAspectForAll(Schedule.class));
     }
 

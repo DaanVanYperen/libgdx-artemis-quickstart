@@ -26,7 +26,8 @@ public class HomingSystem extends EntityProcessingSystem {
     ComponentMapper<Physics> ym;
     ComponentMapper<Attached> am;
 
-    public HomingSystem() {
+	@SuppressWarnings("unchecked")
+	public HomingSystem() {
         super(Aspect.getAspectForAll(Homing.class, Pos.class));
     }
 

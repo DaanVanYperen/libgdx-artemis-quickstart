@@ -26,6 +26,7 @@ public class AimSystem extends EntityProcessingSystem {
     private ComponentMapper<Aim> am;
     private ComponentMapper<Angle> anm;
 
+	@SuppressWarnings("unchecked")
     public AimSystem() {
         super(Aspect.getAspectForAll(Aim.class, Pos.class, Anim.class));
     }

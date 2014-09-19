@@ -25,6 +25,7 @@ public class MouseCursorSystem extends EntityProcessingSystem {
 
     private CameraSystem cameraSystem;
 
+	@SuppressWarnings("unchecked")
     public MouseCursorSystem() {
         super(Aspect.getAspectForAll(Pos.class, MouseCursor.class));
     }

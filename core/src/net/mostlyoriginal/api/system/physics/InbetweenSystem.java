@@ -21,7 +21,8 @@ public class InbetweenSystem extends EntityProcessingSystem {
     ComponentMapper<Inbetween> dm;
     ComponentMapper<Pos> pm;
 
-    public InbetweenSystem() {
+	@SuppressWarnings("unchecked")
+	public InbetweenSystem() {
         super(Aspect.getAspectForAll(Inbetween.class, Pos.class));
     }
 
