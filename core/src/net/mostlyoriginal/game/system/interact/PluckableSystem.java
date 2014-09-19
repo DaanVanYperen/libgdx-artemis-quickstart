@@ -123,8 +123,8 @@ public class PluckableSystem extends EntityProcessingSystem {
                     physicsSystem.push(e,90,100);
                     physicsSystem.push(player.get(), playerAnim.flippedX ? 180 : 0,80);
 
-                    e.edit().removeComponent(Frozen.class);
-	                e.edit().removeComponent(Pluckable.class);
+                    e.edit().remove(Frozen.class);
+	                e.edit().remove(Pluckable.class);
                 }
 
             } else pluckingCooldown = 0;

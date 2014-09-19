@@ -18,6 +18,7 @@ public abstract class Step implements Pool.Poolable {
 
     abstract public boolean act(float delta, Entity e);
 
+	@SuppressWarnings("unchecked")
     public void release() {
         if (pool != null) {
             pool.free(this);

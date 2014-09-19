@@ -11,7 +11,7 @@ import net.mostlyoriginal.api.step.*;
  *
  * Can be used to schedule things like delayed component addition, entity removal or component removal.
  *
- * entity.addComponent(new Schedule().wait(0.5f).add(new ExampleComponent()).changedInWorld().wait(1.5f).remove(ExampleComponent.class).changedInWorld().wait(5).deleteFromWorld());
+ * entity.add(new Schedule().wait(0.5f).add(new ExampleComponent()).changedInWorld().wait(1.5f).remove(ExampleComponent.class).changedInWorld().wait(5).deleteFromWorld());
  *
  * @author Daan van Yperen
  * @see net.mostlyoriginal.api.system.script.SchedulerSystem

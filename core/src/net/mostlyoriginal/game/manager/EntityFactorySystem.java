@@ -46,12 +46,12 @@ public class EntityFactorySystem extends AbstractEntityFactorySystem {
             case "slumberer":
                 return createSlumberer(cx, cy);
             case "turnip":
-                return defaultEntity(cx, cy, "turnip-stuck").addComponent(new Pluckable("turnip-idle"))
-                        .addComponent(new Frozen()).getEntity();
+                return defaultEntity(cx, cy, "turnip-stuck").add(new Pluckable("turnip-idle"))
+                        .add(new Frozen()).getEntity();
             case "chicklet":
                 return defaultEntity(cx, cy, "chicklet-stuck")
-                        .addComponent(new Pluckable("chicklet-idle"))
-                        .addComponent(new Frozen()).getEntity();
+                        .add(new Pluckable("chicklet-idle"))
+                        .add(new Frozen()).getEntity();
             /** @todo Add your entities here */
         }
         return null;
@@ -59,7 +59,7 @@ public class EntityFactorySystem extends AbstractEntityFactorySystem {
 
     private Entity createSlumberer(int cx, int cy) {
         Entity slumberer =
-                defaultEntity(cx, cy, "slumberer-idle").addComponent(new Slumberer()).getEntity();
+                defaultEntity(cx, cy, "slumberer-idle").add(new Slumberer()).getEntity();
         slumberer.getComponent(Anim.class).layer = -2;
 
         Anim eyeAnim     = new Anim("slumberer-eye", -3);
@@ -71,17 +71,17 @@ public class EntityFactorySystem extends AbstractEntityFactorySystem {
         inbetween.by = 10;
         inbetween.maxDistance = 2f;
         Entity eye = world.createEntity().edit()
-                .addComponent(new Pos())
-                .addComponent(eyeAnim)
-                .addComponent(inbetween).getEntity();
+                .add(new Pos())
+                .add(eyeAnim)
+                .add(inbetween).getEntity();
         tagManager.register("slumberer-eye", eye);
 
         Anim eyelidAnim = new Anim("slumberer-eyelid", -1);
         eyelidAnim.loop = false;
         Entity eyelid = world.createEntity().edit()
-                .addComponent(new Pos())
-                .addComponent(eyelidAnim)
-                .addComponent(new Attached(new SafeEntityReference(slumberer), 12, 28)).getEntity();
+                .add(new Pos())
+                .add(eyelidAnim)
+                .add(new Attached(new SafeEntityReference(slumberer), 12, 28)).getEntity();
         tagManager.register("slumberer-eyelid", eyelid);
 
         return slumberer;
@@ -97,10 +97,10 @@ public class EntityFactorySystem extends AbstractEntityFactorySystem {
         final TextureRegion frame = abstractAssetSystem.get(animId).getKeyFrame(0);
 
         return basicCenteredParticle(x, y, animId, 1, 1)
-                .addComponent(new Schedule().wait(1f).deleteFromWorld())
-                .addComponent(physics)
-                .addComponent(new Bounds(frame))
-                .addComponent(new Gravity()).getEntity();
+                .add(new Schedule().wait(1f).deleteFromWorld())
+                .add(physics)
+                .add(new Bounds(frame))
+                .add(new Gravity()).getEntity();
     }
 
     /**
@@ -120,27 +120,27 @@ public class EntityFactorySystem extends AbstractEntityFactorySystem {
         TextureRegion frame = abstractAssetSystem.get(animId).getKeyFrame(0);
 
         return world.createEntity().edit()
-                .addComponent(new Pos(x - ((frame.getRegionWidth() * anim.scale) / 2), y - (frame.getRegionHeight() * anim.scale) / 2))
-                .addComponent(anim);
+                .add(new Pos(x - ((frame.getRegionWidth() * anim.scale) / 2), y - (frame.getRegionHeight() * anim.scale) / 2))
+                .add(anim);
     }
 
 
     private Entity createPlayer(int cx, int cy) {
         Entity player =
                 defaultEntity(cx, cy, "player-idle")
-                        .addComponent(new PlayerControlled())
-                        .addComponent(new MapWallSensor()).getEntity();
+                        .add(new PlayerControlled())
+                        .add(new MapWallSensor()).getEntity();
 
         tagManager.register("player", player);
 
         // now create a drone that will swerve towards the player which contains the camera. this will create a smooth moving camera.
         world.createEntity().edit()
-                .addComponent(new Pos(0, 0))
-                .addComponent(createCameraBounds())
-                .addComponent(new Physics())
-                .addComponent(new Homing(new SafeEntityReference(player)))
-                .addComponent(new Camera())
-                .addComponent(new Clamped(0, 0, 20 * 16, 15 * 16));
+                .add(new Pos(0, 0))
+                .add(createCameraBounds())
+                .add(new Physics())
+                .add(new Homing(new SafeEntityReference(player)))
+                .add(new Camera())
+                .add(new Clamped(0, 0, 20 * 16, 15 * 16));
 
         return player;
     }
@@ -157,13 +157,13 @@ public class EntityFactorySystem extends AbstractEntityFactorySystem {
 
     private EntityEdit defaultEntity(int cx, int cy, String startingAnim) {
         return world.createEntity().edit()
-                .addComponent(new Pos(cx, cy))
-                .addComponent(new Angle())
-                .addComponent(new Bounds(0, 0, 25, 16))
-                .addComponent(new Anim(startingAnim))
-                .addComponent(new MapSolid())
-                .addComponent(new Physics())
-                .addComponent(new Gravity());
+                .add(new Pos(cx, cy))
+                .add(new Angle())
+                .add(new Bounds(0, 0, 25, 16))
+                .add(new Anim(startingAnim))
+                .add(new MapSolid())
+                .add(new Physics())
+                .add(new Gravity());
     }
 
 }
