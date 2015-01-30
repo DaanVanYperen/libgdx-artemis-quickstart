@@ -19,7 +19,7 @@ into a library later, no guarantees. ;)
 
 ### Library Versions
 
-LibGDX 1.5.0 and Artemis-ODB 0.8.1
+LibGDX 1.5.3 and Artemis-ODB 0.8.2-SNAPSHOT
 (LibGDX version can be changed in /build.gradle)
 
 Tested for desktop:dist and html:dist targets. Others targets might function too. ;)

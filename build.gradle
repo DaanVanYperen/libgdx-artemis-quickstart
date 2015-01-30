@@ -21,8 +21,8 @@ allprojects {
 
     ext {
         appName = 'GameTemplate'
-        gdxVersion = '1.5.0'
-        artemisVersion = '0.8.1'
+        gdxVersion = '1.5.3'
+        artemisVersion = '0.8.2-SNAPSHOT'
         roboVMVersion = '0.0.11'
     }
 
