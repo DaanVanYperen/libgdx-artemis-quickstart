@@ -7,9 +7,17 @@ buildscript {
     }
     dependencies {
         classpath 'de.richsource.gradle.plugins:gwt-gradle-plugin:0.3'
-//      classpath 'com.android.tools.build:gradle:0.9+'
-//      classpath 'com.github.jtakakura:gradle-robovm-plugin:0.0.7'
         classpath "net.onedaybeard.artemis:artemis-odb-gradle-plugin:0.7.1"
+
+        // introduces support for provided scope.
+        classpath 'com.netflix.nebula:gradle-extra-configurations-plugin:1.12.+'
+
+        // replace with the current version of the Android plugin
+        // classpath 'com.android.tools.build:gradle:0.14.4'
+        // the latest version of the android-apt plugin
+        // classpath 'com.neenbedankt.gradle.plugins:android-apt:1.4'
+
+        // classpath 'com.github.jtakakura:gradle-robovm-plugin:0.0.7'
     }
 }
 
@@ -102,6 +110,8 @@ project(":html") {
 
 project(":core") {
     apply plugin: "java"
+    apply plugin: 'provided-base'
+
     sourceCompatibility = "1.7"
     targetCompatibility = "1.7"
 
@@ -110,6 +120,9 @@ project(":core") {
 
         // Support for artemis-odb
         compile "net.onedaybeard.artemis:artemis-odb:$artemisVersion"
+
+        // Artemis-odb annotation processor (see https://github.com/junkdog/artemis-odb/wiki/EntityFactory)
+        provided "net.onedaybeard.artemis:artemis-odb-processor:$artemisVersion"
     }
 }
 
