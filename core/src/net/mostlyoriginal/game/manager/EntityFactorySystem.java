@@ -8,12 +8,10 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.math.MathUtils;
-import net.mostlyoriginal.api.component.basic.Angle;
 import net.mostlyoriginal.api.component.basic.Bounds;
 import net.mostlyoriginal.api.component.basic.Pos;
 import net.mostlyoriginal.api.component.camera.Camera;
 import net.mostlyoriginal.api.component.graphics.Anim;
-import net.mostlyoriginal.api.component.map.MapSolid;
 import net.mostlyoriginal.api.component.map.MapWallSensor;
 import net.mostlyoriginal.api.component.physics.*;
 import net.mostlyoriginal.api.component.script.Schedule;
@@ -22,9 +20,10 @@ import net.mostlyoriginal.api.manager.AbstractEntityFactorySystem;
 import net.mostlyoriginal.api.utils.SafeEntityReference;
 import net.mostlyoriginal.api.utils.TagEntityReference;
 import net.mostlyoriginal.game.MainScreen;
-import net.mostlyoriginal.game.component.agent.Slumberer;
 import net.mostlyoriginal.game.component.agent.PlayerControlled;
+import net.mostlyoriginal.game.component.agent.Slumberer;
 import net.mostlyoriginal.game.component.interact.Pluckable;
+import net.mostlyoriginal.game.manager.factory.DefaultEntity;
 
 /**
  * Game specific entity factory.
@@ -60,7 +59,7 @@ public class EntityFactorySystem extends AbstractEntityFactorySystem {
     private Entity createSlumberer(int cx, int cy) {
         Entity slumberer =
                 defaultEntity(cx, cy, "slumberer-idle").add(new Slumberer()).getEntity();
-        slumberer.getComponent(Anim.class).layer = -2;
+        //slumberer.getComponent(Anim.class).layer = -2;
 
         Anim eyeAnim     = new Anim("slumberer-eye", -3);
         eyeAnim.loop     = false;
@@ -155,15 +154,11 @@ public class EntityFactorySystem extends AbstractEntityFactorySystem {
         );
     }
 
+
+	DefaultEntity defaultEntity;
+
     private EntityEdit defaultEntity(int cx, int cy, String startingAnim) {
-        return world.createEntity().edit()
-                .add(new Pos(cx, cy))
-                .add(new Angle())
-                .add(new Bounds(0, 0, 25, 16))
-                .add(new Anim(startingAnim))
-                .add(new MapSolid())
-                .add(new Physics())
-                .add(new Gravity());
+        return defaultEntity.pos(cx,cy).bounds(0,0,25,16).anim(startingAnim).create().edit();
     }
 
 }
