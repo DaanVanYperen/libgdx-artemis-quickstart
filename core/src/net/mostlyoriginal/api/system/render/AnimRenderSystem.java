@@ -10,6 +10,7 @@ import com.artemis.Entity;
 import com.artemis.EntitySystem;
 import com.artemis.annotations.Wire;
 import com.artemis.utils.ImmutableBag;
+import com.artemis.utils.IntBag;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import net.mostlyoriginal.api.component.basic.Angle;
@@ -72,8 +73,8 @@ public class AnimRenderSystem extends EntitySystem {
         batch.end();
     }
 
-    @Override
-    protected void processEntities(ImmutableBag<Entity> entities) {
+	@Override
+    protected void processEntities(IntBag intBag) {
 
         if (sortedDirty) {
             sortedDirty = false;
