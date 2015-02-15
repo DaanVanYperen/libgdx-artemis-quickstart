@@ -18,7 +18,7 @@ it for whatever you need.
 
 LibGDX 1.5.4 and Artemis-ODB 0.9
 
-Versions can be changed in /build.gradle
+Alter versions and re-enable gdx modules in /build.gradle
 
 ### GWT and Reflection
 
