@@ -8,6 +8,7 @@ import com.artemis.annotations.Wire;
 import com.artemis.systems.EntityProcessingSystem;
 import com.artemis.utils.EntityBuilder;
 import com.artemis.utils.reflect.ClassReflection;
+import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 import net.mostlyoriginal.game.component.detection.OdbFeatureComponent;
 import net.mostlyoriginal.game.component.detection.PackDetectionComponent;
@@ -37,6 +38,7 @@ public class OdbFeatureDetectionSystem extends EntityProcessingSystem {
 		features.isPooled = isPooledWeavingEnabled();
 		features.isHotspotOptimization = isHotspotOptimizationEnabled();
 
+		Gdx.app.setLogLevel(Application.LOG_DEBUG);
 		logState("Struct Emulation", features.isPacked);
 		logState("Pooling", features.isPooled);
 		logState("Hotspot Optimization", features.isHotspotOptimization);
