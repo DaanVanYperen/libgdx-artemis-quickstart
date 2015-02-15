@@ -1,10 +1,11 @@
 package net.mostlyoriginal.game.system.detection;
 
+import com.artemis.Aspect;
 import com.artemis.Entity;
 import com.artemis.PackedComponent;
 import com.artemis.PooledComponent;
 import com.artemis.annotations.Wire;
-import com.artemis.systems.VoidEntitySystem;
+import com.artemis.systems.EntityProcessingSystem;
 import com.artemis.utils.EntityBuilder;
 import com.artemis.utils.reflect.ClassReflection;
 import com.badlogic.gdx.Gdx;
@@ -18,7 +19,11 @@ import net.mostlyoriginal.game.component.detection.PoolDetectionComponent;
  * @author Daan van Yperen
  */
 @Wire
-public class OdbFeatureDetectionSystem extends VoidEntitySystem {
+public class OdbFeatureDetectionSystem extends EntityProcessingSystem {
+
+	public OdbFeatureDetectionSystem() {
+		super(Aspect.getEmpty());
+	}
 
 	@Override
 	protected void initialize() {
@@ -30,13 +35,17 @@ public class OdbFeatureDetectionSystem extends VoidEntitySystem {
 		// detect packing based on reflection.
 		features.isPacked = isPackedWeavingEnabled();
 		features.isPooled = isPooledWeavingEnabled();
+		features.isHotspotOptimization = isHotspotOptimizationEnabled();
 
-		logState("Packing", features.isPacked);
+		logState("Struct Emulation", features.isPacked);
 		logState("Pooling", features.isPooled);
+		logState("Hotspot Optimization", features.isHotspotOptimization);
 	}
 
-	private void logState(final String feature, boolean state) {
-		Gdx.app.log("OdbFeatureDetectionSystem", feature + " is " + (state ? "enabled" : "disabled"));
+	private boolean isHotspotOptimizationEnabled() {
+		// hotspot optimization replaces (amongst other steps) references to entityprocessingsystem with entitysystem.
+		// so we can determine this optimization by EntityProcessingSystem missing from our system's hierarchy.
+		return !ClassReflection.isAssignableFrom(EntityProcessingSystem.class, OdbFeatureDetectionSystem.class);
 	}
 
 	private boolean isPooledWeavingEnabled() {
@@ -49,7 +58,12 @@ public class OdbFeatureDetectionSystem extends VoidEntitySystem {
 		return ClassReflection.isAssignableFrom(PackedComponent.class, PackDetectionComponent.class);
 	}
 
+	private void logState(final String feature, boolean state) {
+		Gdx.app.log("OdbFeatureDetectionSystem", feature + " is " + (state ? "enabled" : "disabled"));
+	}
+
 	@Override
-	protected void processSystem() {
+	protected void process(Entity e) {
+		// do nothing.
 	}
 }
