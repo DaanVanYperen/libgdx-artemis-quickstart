@@ -1,10 +1,9 @@
-package net.mostlyoriginal.game;
+package net.mostlyoriginal.game.screen;
 
 import com.artemis.World;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.math.MathUtils;
+import net.mostlyoriginal.game.system.ClearScreenSystem;
 
 /**
  * Shows all detected artemis-odb features.
@@ -20,6 +19,7 @@ public class OdbFeatureScreen implements Screen {
 	public OdbFeatureScreen() {
 
 		world = new World();
+		world.setSystem(new ClearScreenSystem());
 		world.initialize();
 	}
 
@@ -30,9 +30,6 @@ public class OdbFeatureScreen implements Screen {
 
 	@Override
 	public void render(float delta) {
-		Gdx.gl.glClearColor(0, 1, 0, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
 		// Prevent spikes in delta from causing insane world updates.
 		world.setDelta(MathUtils.clamp(delta, 0, MIN_DELTA));
 		world.process();
