@@ -1,5 +1,4 @@
 apply plugin: "java"
-apply plugin: "artemis"
 
 sourceCompatibility = 1.7
 sourceSets.main.java.srcDirs = [ "src/" ]
@@ -16,29 +15,12 @@ task run(dependsOn: classes, type: JavaExec) {
     ignoreExitValue = true
 }
 
-// artemis-odb: explode for weaving.
-task explode(type: Sync, dependsOn: classes) {
-    into project.weaveDir
+// artemis-odb: package directory into jar.
+task dist(type: Jar) {
     from files(sourceSets.main.output.classesDir)
     from files(sourceSets.main.output.resourcesDir)
     from {configurations.compile.collect {zipTree(it)}}
     from files(project.assetsDir)
-}
-
-// artemis-odb: weaving settings.
-weave {
-    dependsOn explode
-    enableArtemisPlugin = true
-    enablePackedWeaving = true
-    enablePooledWeaving = true
-    ideFriendlyPacking = true
-    optimizeEntitySystems = true
-    classesDir = project.weaveDir
-}
-
-// artemis-odb: package directory into jar.
-task dist(type: Jar, dependsOn: weave) {
-    from project.weaveDir
     manifest {
         attributes 'Main-Class': project.mainClassName
     }

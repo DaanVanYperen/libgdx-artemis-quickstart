@@ -11,7 +11,7 @@ buildscript {
 
         // libs for artemis-odb weaving + annotation processing.
         // see https://github.com/junkdog/artemis-odb/wiki/Bytecode-weaving
-        classpath 'net.onedaybeard.artemis:artemis-odb-gradle-plugin:0.9.0'
+        classpath 'net.onedaybeard.artemis:artemis-odb-gradle-plugin:0.9.1-SNAPSHOT'
     }
 }
 
