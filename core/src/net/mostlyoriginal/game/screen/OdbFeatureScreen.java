@@ -4,6 +4,7 @@ import com.artemis.World;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.math.MathUtils;
 import net.mostlyoriginal.game.system.ClearScreenSystem;
+import net.mostlyoriginal.game.system.detection.OdbFeatureDetectionSystem;
 
 /**
  * Shows all detected artemis-odb features.
@@ -20,6 +21,7 @@ public class OdbFeatureScreen implements Screen {
 
 		world = new World();
 		world.setSystem(new ClearScreenSystem());
+		world.setSystem(new OdbFeatureDetectionSystem());
 		world.initialize();
 	}
 
