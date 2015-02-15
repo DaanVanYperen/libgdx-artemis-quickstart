@@ -5,8 +5,8 @@ sourceCompatibility = 1.7
 sourceSets.main.java.srcDirs = [ "src/" ]
 
 project.ext.mainClassName = "net.mostlyoriginal.game.desktop.DesktopLauncher"
-project.ext.assetsDir = new File("../android/assets")
-project.ext.weaveDir = new File("$buildDir/explodedForWeave")
+project.ext.assetsDir = new File("../android/assets");
+project.ext.weaveDir = new File("$buildDir/exploded")
 
 task run(dependsOn: classes, type: JavaExec) {
     main = project.mainClassName
@@ -17,7 +17,7 @@ task run(dependsOn: classes, type: JavaExec) {
 }
 
 // artemis-odb: explode for weaving.
-task explodeForArtemisWeave(type: Sync, dependsOn: classes) {
+task explode(type: Sync, dependsOn: classes) {
     into project.weaveDir
     from files(sourceSets.main.output.classesDir)
     from files(sourceSets.main.output.resourcesDir)
@@ -27,8 +27,9 @@ task explodeForArtemisWeave(type: Sync, dependsOn: classes) {
 
 // artemis-odb: weaving settings.
 weave {
-    dependsOn explodeForArtemisWeave
+    dependsOn explode
     enableArtemisPlugin = true
+    enablePackedWeaving = true
     enablePooledWeaving = true
     ideFriendlyPacking = true
     optimizeEntitySystems = true

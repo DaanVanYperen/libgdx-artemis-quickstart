@@ -20,6 +20,11 @@ LibGDX 1.5.4 and Artemis-ODB 0.9
 
 Alter versions and re-enable gdx modules in /build.gradle
 
+### Weaving
+
+Weaving is part of a package explosion, and performed on
+`desktop:dist` only!
+
 ### GWT and Reflection
 
 GWT lacks reflection so the build process creates a reflection cache. 
