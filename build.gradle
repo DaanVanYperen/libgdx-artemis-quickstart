@@ -130,6 +130,11 @@ project(":core") {
         provided
     }
 
+    sourceSets {
+        // run the annotation processor compile time.
+        main { compileClasspath += [configurations.provided] }
+    }
+
     dependencies {
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
 
