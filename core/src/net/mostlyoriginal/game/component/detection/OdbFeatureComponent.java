@@ -9,4 +9,5 @@ public class OdbFeatureComponent extends Component {
 	public boolean isPacked;
 	public boolean isPooled;
 	public boolean isHotspotOptimization;
+	public boolean isFactory;
 }

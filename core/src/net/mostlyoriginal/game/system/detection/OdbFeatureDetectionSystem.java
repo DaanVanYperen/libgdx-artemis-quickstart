@@ -1,9 +1,6 @@
 package net.mostlyoriginal.game.system.detection;
 
-import com.artemis.Aspect;
-import com.artemis.Entity;
-import com.artemis.PackedComponent;
-import com.artemis.PooledComponent;
+import com.artemis.*;
 import com.artemis.annotations.Wire;
 import com.artemis.systems.EntityProcessingSystem;
 import com.artemis.utils.EntityBuilder;
@@ -38,11 +35,22 @@ public class OdbFeatureDetectionSystem extends EntityProcessingSystem {
 		features.isPacked = isPackedWeavingEnabled();
 		features.isPooled = isPooledWeavingEnabled();
 		features.isHotspotOptimization = isHotspotOptimizationEnabled();
+		features.isFactory = isFactoryCreationEnabled();
 
 		Gdx.app.setLogLevel(Application.LOG_DEBUG);
-		logState("Struct Emulation", features.isPacked);
-		logState("Pooling", features.isPooled);
-		logState("Hotspot Optimization", features.isHotspotOptimization);
+		logState("Struct Emulation ...... ", features.isPacked);
+		logState("Pooling ............... ", features.isPooled);
+		logState("Hotspot Optimization .. ", features.isHotspotOptimization);
+		logState("Factory ............... ", features.isFactory);
+	}
+
+	private boolean isFactoryCreationEnabled() {
+		try {
+			return ArtemisUtils.createFactory(world, FactoryTestEntity.class) != null;
+		} catch ( Exception e ) {
+			// exceptions indicate factories are not being implemented by entity factory.
+			return false;
+		}
 	}
 
 	private boolean isHotspotOptimizationEnabled() {
@@ -62,7 +70,7 @@ public class OdbFeatureDetectionSystem extends EntityProcessingSystem {
 	}
 
 	private void logState(final String feature, boolean state) {
-		Gdx.app.log("OdbFeatureDetectionSystem", feature + " is " + (state ? "enabled" : "disabled"));
+		Gdx.app.log("OdbFeatureDetectionSystem", feature + (state ? "enabled" : "disabled"));
 	}
 
 	@Override
