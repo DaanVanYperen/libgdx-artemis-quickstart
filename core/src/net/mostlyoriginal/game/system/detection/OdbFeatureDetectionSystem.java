@@ -36,11 +36,10 @@ public class OdbFeatureDetectionSystem extends EntityProcessingSystem {
 		features.isHotspotOptimization = isHotspotOptimizationEnabled();
 		features.isFactory = isFactoryCreationEnabled();
 
-		Gdx.app.setLogLevel(Application.LOG_DEBUG);
-		logState("Struct Emulation ...... ", features.isPacked);
-		logState("Pooling ............... ", features.isPooled);
-		logState("Hotspot Optimization .. ", features.isHotspotOptimization);
-		logState("Factory ............... ", features.isFactory);
+		debugFeature("Struct Emulation ...... ", features.isPacked);
+		debugFeature("Pooling ............... ", features.isPooled);
+		debugFeature("Hotspot Optimization .. ", features.isHotspotOptimization);
+		debugFeature("Factory ............... ", features.isFactory);
 	}
 
 	private boolean isFactoryCreationEnabled() {
@@ -68,8 +67,8 @@ public class OdbFeatureDetectionSystem extends EntityProcessingSystem {
 		return ClassReflection.isAssignableFrom(PackedComponent.class, PackDetectionComponent.class);
 	}
 
-	private void logState(final String feature, boolean state) {
-		Gdx.app.log("OdbFeatureDetectionSystem", feature + (state ? "enabled" : "disabled"));
+	private void debugFeature(final String feature, boolean state) {
+		Gdx.app.debug("OdbFeatureDetectionSystem", feature + (state ? "enabled" : "disabled"));
 	}
 
 	@Override
