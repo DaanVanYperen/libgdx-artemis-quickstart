@@ -9,7 +9,7 @@ buildscript {
         classpath 'com.android.tools.build:gradle:1.0.0'
         classpath 'org.robovm:robovm-gradle-plugin:1.0.0-beta-04'
 
-        // libs for artemis-odb weaving + annotation processing.
+        // lib for artemis-odb weaving.
         // see https://github.com/junkdog/artemis-odb/wiki/Bytecode-weaving
         classpath 'net.onedaybeard.artemis:artemis-odb-gradle-plugin:0.9.1-SNAPSHOT'
     }
@@ -24,16 +24,17 @@ allprojects {
         appName = 'libgdx-artemis-quickstart'
         gdxVersion = '1.5.4'
         roboVMVersion = '1.0.0-beta-04'
-        box2DLightsVersion = '1.3'
-        ashleyVersion = '1.3.1'
-        aiVersion = '1.5.0'
-        artemisVersion = '0.9.0' // don't forget to edit version artemis-odb-gradle-plugin manually (see above).
+        artemisVersion = '0.9.1-SNAPSHOT' // don't forget to edit version artemis-odb-gradle-plugin manually (see above).
+        artemisContribVersion = "0.9.1-SNAPSHOT"
+        //box2DLightsVersion = '1.3'
+        //aiVersion = '1.5.0'
     }
 
     repositories {
         mavenCentral()
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
         maven { url "https://oss.sonatype.org/content/repositories/releases/" }
+        mavenLocal()
     }
 }
 
@@ -46,7 +47,7 @@ project(":desktop") {
         compile "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
 
-        // LibGDX Modules
+        // Optional LibGDX Modules
 //        compile "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
 //        compile "com.badlogicgames.gdx:gdx-controllers-desktop:$gdxVersion"
 //        compile "com.badlogicgames.gdx:gdx-controllers-platform:$gdxVersion:natives-desktop"
@@ -66,7 +67,7 @@ project(":android") {
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi-v7a"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86"
 
-        // LibGDX Modules
+        // Optional LibGDX Modules
 //        compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
 //        natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-armeabi"
 //        natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-armeabi-v7a"
@@ -91,7 +92,7 @@ project(":ios") {
         compile "com.badlogicgames.gdx:gdx-backend-robovm:$gdxVersion"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-ios"
 
-        // LibGDX Modules:
+        // Optional LibGDX Modules:
 //        natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-ios"
     }
 }
@@ -107,7 +108,7 @@ project(":html") {
         compile "com.badlogicgames.gdx:gdx:$gdxVersion:sources"
         compile "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion:sources"
 
-        // LibGDX Modules
+        // Optional LibGDX Modules
 //        compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion:sources"
 //        compile "com.badlogicgames.gdx:gdx-box2d-gwt:$gdxVersion:sources"
 //        compile "com.badlogicgames.gdx:gdx-controllers:$gdxVersion:sources"
@@ -120,6 +121,11 @@ project(":html") {
         compile "net.onedaybeard.artemis:artemis-odb-gwt:$artemisVersion"
         compile "net.onedaybeard.artemis:artemis-odb-gwt:$artemisVersion:sources"
         compile "net.onedaybeard.artemis:artemis-odb:$artemisVersion:sources"
+
+        // Artemis-odb supplemental functionality.
+        compile "net.mostlyoriginal.artemis-odb:contrib-core:$artemisContribVersion:sources"
+        compile "net.mostlyoriginal.artemis-odb:contrib-jam:$artemisContribVersion:sources"
+        compile "net.mostlyoriginal.artemis-odb:contrib-eventbus:$artemisContribVersion:sources"
     }
 }
 
@@ -138,7 +144,7 @@ project(":core") {
     dependencies {
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
 
-        // LibGDX Modules
+        // Optional LibGDX Modules
 //        compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
 //        compile "com.badlogicgames.gdx:gdx-controllers:$gdxVersion"
 //        compile "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion"
@@ -148,6 +154,11 @@ project(":core") {
         compile "net.onedaybeard.artemis:artemis-odb:$artemisVersion"
         // Artemis-odb annotation processor (see https://github.com/junkdog/artemis-odb/wiki/EntityFactory)
         provided "net.onedaybeard.artemis:artemis-odb-processor:$artemisVersion"
+
+        // Artemis-odb supplemental functionality.
+        compile "net.mostlyoriginal.artemis-odb:contrib-core:$artemisContribVersion"
+        compile "net.mostlyoriginal.artemis-odb:contrib-jam:$artemisContribVersion"
+        compile "net.mostlyoriginal.artemis-odb:contrib-eventbus:$artemisContribVersion"
     }
 }
 
