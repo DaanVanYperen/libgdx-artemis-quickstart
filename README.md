@@ -4,7 +4,8 @@ libgdx-artemis-quickstart
 Quickstart for libgdx artemis-odb based games.
 
 Preconfigured for artemis-odb advanced features. Contains
-a simplistic benchmark game and artemis feature examples.
+a logo screen with artemis feature detection and game
+scaffolding.
 
 ### When to use this
 
@@ -14,13 +15,15 @@ LibGDX's gradle, a fork will get you up and running quickly.
 I use this as my quickstart for jam games. You are welcome 
 to use it for whatever you need.
 
-### Library Versions
+### Where to start
 
-LibGDX 1.5.4 and Artemis-ODB 0.9
+Edit `net.mostlyoriginal.game.screen.GameScreen` and start
+adding systems!
 
-Alter library versions and enable gdx modules in /build.gradle
+Running the game displays a odb feature splash screen,
+before transitioning to your game.
 
-### Matrix
+### Platform cheat sheet
 
 | Platform        | [odb weaving](https://github.com/junkdog/artemis-odb/wiki/Bytecode-weaving)  | [entity factory](https://github.com/junkdog/artemis-odb/wiki/EntityFactory) | quickstart
 |-----------------|----------|----------------|--------------------
@@ -30,6 +33,12 @@ Alter library versions and enable gdx modules in /build.gradle
 | HTML5/GWT       | -        | ✓ | `gradlew html:superDev`, browse to `http://localhost:8080/html`
 
 ✓ supported, - not supported
+
+### Library Versions
+
+LibGDX 1.5.4 and Artemis-ODB 0.9
+
+Alter library versions and enable gdx modules in /build.gradle
 
 ### Weaving
 
