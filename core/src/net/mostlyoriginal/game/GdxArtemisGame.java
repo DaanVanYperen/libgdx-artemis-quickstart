@@ -1,7 +1,7 @@
 package net.mostlyoriginal.game;
 
 import com.badlogic.gdx.Game;
-import net.mostlyoriginal.game.screen.OdbFeatureScreen;
+import net.mostlyoriginal.game.screen.detection.OdbFeatureScreen;
 
 public class GdxArtemisGame extends Game {
 

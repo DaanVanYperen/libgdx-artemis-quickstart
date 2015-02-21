@@ -1,9 +1,9 @@
-package net.mostlyoriginal.game.screen;
+package net.mostlyoriginal.game.screen.detection;
 
 import com.artemis.World;
 import net.mostlyoriginal.api.utils.builder.WorldBuilder;
 import net.mostlyoriginal.game.screen.core.WorldScreen;
-import net.mostlyoriginal.game.system.ClearScreenSystem;
+import net.mostlyoriginal.game.system.render.ClearScreenSystem;
 import net.mostlyoriginal.game.system.detection.OdbFeatureDetectionSystem;
 
 /**
