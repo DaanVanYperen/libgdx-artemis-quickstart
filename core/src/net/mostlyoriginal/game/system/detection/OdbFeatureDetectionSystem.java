@@ -7,7 +7,6 @@ import com.artemis.utils.EntityBuilder;
 import com.artemis.utils.reflect.ClassReflection;
 import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
 import net.mostlyoriginal.game.component.detection.OdbFeatureComponent;
 import net.mostlyoriginal.game.component.detection.PackDetectionComponent;
 import net.mostlyoriginal.game.component.detection.PoolDetectionComponent;
@@ -75,10 +74,7 @@ public class OdbFeatureDetectionSystem extends EntityProcessingSystem {
 
 	@Override
 	protected void process(Entity e) {
-
 		// just for quick debugging on macos.
 		OdbFeatureComponent feature = e.getComponent(OdbFeatureComponent.class);
-		Gdx.gl.glClearColor(feature.isPooled ? 0 : 1, feature.isPooled ? 1 : 0, 0.25f, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 	}
 }
