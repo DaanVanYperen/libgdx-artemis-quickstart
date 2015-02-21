@@ -7,9 +7,9 @@ import com.artemis.annotations.Wire;
 import com.artemis.systems.EntityProcessingSystem;
 import com.artemis.utils.EntityBuilder;
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Screen;
 import net.mostlyoriginal.api.component.script.Schedule;
 import net.mostlyoriginal.game.component.logic.Transition;
-import net.mostlyoriginal.game.screen.detection.GameScreen;
 
 /**
  * Transition between screens.
@@ -28,7 +28,7 @@ public class TransitionSystem extends EntityProcessingSystem {
 	}
 
 	/** Transition to screen after delay in seconds. */
-	public void transition(Class<GameScreen> screen, float delay) {
+	public void transition(Class<? extends Screen> screen, float delay) {
 		new EntityBuilder(world).with(new Schedule().wait(delay).add(new Transition(screen)));
 	}
 
