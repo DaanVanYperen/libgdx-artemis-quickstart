@@ -24,6 +24,9 @@ public abstract class WorldScreen implements Screen {
 
 	@Override
 	public void render(float delta) {
+		if ( world == null ) {
+			throw new RuntimeException("World not initialized.");
+		}
 		// Prevent spikes in delta from causing insane world updates.
 		world.setDelta(MathUtils.clamp(delta, 0, MIN_DELTA));
 		world.process();
