@@ -6,6 +6,7 @@ import com.artemis.Entity;
 import com.artemis.annotations.Wire;
 import com.artemis.systems.EntityProcessingSystem;
 import com.artemis.utils.EntityBuilder;
+import com.artemis.utils.reflect.ClassReflection;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Screen;
 import net.mostlyoriginal.api.component.script.Schedule;
@@ -35,8 +36,8 @@ public class TransitionSystem extends EntityProcessingSystem {
 	@Override
 	protected void process(Entity e) {
 		try {
-			game.setScreen(mTransition.get(e).screen.newInstance());
-		} catch (InstantiationException | IllegalAccessException ex ) {
+			game.setScreen(ClassReflection.newInstance(mTransition.get(e).screen));
+		} catch (Exception ex ) {
 			throw new RuntimeException(ex);
 		}
 	}

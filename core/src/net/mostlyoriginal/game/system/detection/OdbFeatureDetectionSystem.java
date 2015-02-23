@@ -5,7 +5,6 @@ import com.artemis.annotations.Wire;
 import com.artemis.systems.EntityProcessingSystem;
 import com.artemis.utils.EntityBuilder;
 import com.artemis.utils.reflect.ClassReflection;
-import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 import net.mostlyoriginal.game.component.detection.OdbFeatureComponent;
 import net.mostlyoriginal.game.component.detection.PackDetectionComponent;
@@ -17,11 +16,7 @@ import net.mostlyoriginal.game.component.detection.PoolDetectionComponent;
  * @author Daan van Yperen
  */
 @Wire
-public class OdbFeatureDetectionSystem extends EntityProcessingSystem {
-
-	public OdbFeatureDetectionSystem() {
-		super(Aspect.getAspectForAll(OdbFeatureComponent.class));
-	}
+public class OdbFeatureDetectionSystem extends BaseSystem {
 
 	@Override
 	protected void initialize() {
@@ -72,8 +67,6 @@ public class OdbFeatureDetectionSystem extends EntityProcessingSystem {
 	}
 
 	@Override
-	protected void process(Entity e) {
-		// just for quick debugging on macos.
-		OdbFeatureComponent feature = e.getComponent(OdbFeatureComponent.class);
+	protected void processSystem() {
 	}
 }

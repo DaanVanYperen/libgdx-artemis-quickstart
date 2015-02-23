@@ -1,11 +1,12 @@
 package net.mostlyoriginal.game.screen.detection;
 
 import com.artemis.World;
+import com.badlogic.gdx.graphics.Color;
 import net.mostlyoriginal.api.system.script.SchedulerSystem;
 import net.mostlyoriginal.api.utils.builder.WorldBuilder;
 import net.mostlyoriginal.game.GdxArtemisGame;
-import net.mostlyoriginal.game.screen.core.WorldScreen;
 import net.mostlyoriginal.game.screen.GameScreen;
+import net.mostlyoriginal.game.screen.core.WorldScreen;
 import net.mostlyoriginal.game.system.detection.OdbFeatureDetectionSystem;
 import net.mostlyoriginal.game.system.logic.TransitionSystem;
 import net.mostlyoriginal.game.system.render.ClearScreenSystem;
@@ -23,7 +24,7 @@ public class OdbFeatureScreen extends WorldScreen {
 
 		World world = new WorldBuilder()
 				.with(
-						new ClearScreenSystem(),
+						new ClearScreenSystem(Color.valueOf("231f20")),
 						new OdbFeatureDetectionSystem(),
 						new SchedulerSystem(),
 						new TransitionSystem(GdxArtemisGame.getInstance())

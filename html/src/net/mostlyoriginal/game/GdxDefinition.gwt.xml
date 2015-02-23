@@ -11,6 +11,7 @@
     <!-- Just include everything. -->
     <extend-configuration-property name="artemis.reflect.include" value="net.mostlyoriginal.game.component" />
     <extend-configuration-property name="artemis.reflect.include" value="net.mostlyoriginal.game.system" />
+    <extend-configuration-property name="artemis.reflect.include" value="net.mostlyoriginal.api" />
 
 	<inherits name='GdxArtemisGame' />
 	<entry-point class='net.mostlyoriginal.game.client.HtmlLauncher' />
