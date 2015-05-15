@@ -36,7 +36,7 @@ before transitioning to your game.
 
 ### Library Versions
 
-LibGDX 1.5.4 and Artemis-ODB 0.9.1-SNAPSHOT
+LibGDX 1.6.0 and Artemis-ODB 0.9.1-SNAPSHOT
 
 Alter library versions and enable gdx modules in /build.gradle
 
