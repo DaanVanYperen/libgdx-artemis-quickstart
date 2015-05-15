@@ -18,12 +18,14 @@ import net.mostlyoriginal.game.component.detection.PoolDetectionComponent;
 @Wire
 public class OdbFeatureDetectionSystem extends BaseSystem {
 
+	public static final String FEATURES_TAG = "features";
+
 	@Override
 	protected void initialize() {
 		super.initialize();
 
 		OdbFeatureComponent features = new OdbFeatureComponent();
-		Entity e = new EntityBuilder(world).with(features).build();
+		new EntityBuilder(world).with(features).tag(FEATURES_TAG).build();
 
 		// detect packing based on reflection.
 		features.isPacked = isPackedWeavingEnabled();
