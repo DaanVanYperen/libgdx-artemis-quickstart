@@ -18,8 +18,6 @@ import net.mostlyoriginal.game.system.logic.TransitionSystem;
  */
 public class OdbFeatureScreen extends WorldScreen {
 
-	public static final int DISPLAY_SECONDS = 2;
-
 	protected World createWorld() {
 
 		World world = new WorldBuilder()
@@ -31,8 +29,13 @@ public class OdbFeatureScreen extends WorldScreen {
 				).initialize();
 
 		// initialize systems.
-		world.getSystem(TransitionSystem.class).transition(GameScreen.class, DISPLAY_SECONDS);
+		scheduleTransitionToGameScreen(world);
 
 		return world;
+	}
+
+	public static final int DISPLAY_SECONDS = 2;
+	private void scheduleTransitionToGameScreen(World world) {
+		world.getSystem(TransitionSystem.class).transition(GameScreen.class, DISPLAY_SECONDS);
 	}
 }
