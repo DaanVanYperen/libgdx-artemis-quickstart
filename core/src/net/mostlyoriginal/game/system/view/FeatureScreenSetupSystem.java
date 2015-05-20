@@ -5,7 +5,6 @@ import com.artemis.annotations.Wire;
 import com.artemis.managers.TagManager;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Interpolation;
-import com.badlogic.gdx.math.MathUtils;
 import net.mostlyoriginal.api.component.graphics.Color;
 import net.mostlyoriginal.api.component.graphics.ColorAnimation;
 import net.mostlyoriginal.api.component.graphics.InterpolationStrategy;
@@ -15,6 +14,7 @@ import net.mostlyoriginal.game.component.detection.OdbFeatureComponent;
 import net.mostlyoriginal.game.screen.GameScreen;
 import net.mostlyoriginal.game.system.detection.OdbFeatureDetectionSystem;
 import net.mostlyoriginal.game.system.logic.TransitionSystem;
+import net.mostlyoriginal.game.util.Anims;
 
 /**
  * @author Daan van Yperen
@@ -59,7 +59,7 @@ public class FeatureScreenSetupSystem extends PassiveSystem {
 		final float widthScale = Gdx.graphics.getWidth() / FeatureScreenAssetSystem.FEATURE_WIDTH;
 		final float heightScale = Gdx.graphics.getHeight() / FeatureScreenAssetSystem.FEATURE_HEIGHT;
 
-		assetSystem.createAnimAt(world,
+		Anims.createAnimAt(world,
 				0,
 				0,
 				"background",
@@ -68,10 +68,10 @@ public class FeatureScreenSetupSystem extends PassiveSystem {
 
 	private void addFeatureIcon(boolean state, String iconId) {
 
-		final float scale = assetSystem.scaleToScreenRounded(0.08f, FeatureScreenAssetSystem.FEATURE_WIDTH);
+		final float scale = Anims.scaleToScreenRounded(0.08f, FeatureScreenAssetSystem.FEATURE_WIDTH);
 		final float iconBorderMargin = scale * FEATURE_BORDER_MARGIN;
 		final float iconOffset = ((scale * FeatureScreenAssetSystem.FEATURE_WIDTH) + iconBorderMargin);
-		final Entity entity = assetSystem.createAnimAt(world,
+		final Entity entity = Anims.createAnimAt(world,
 				(int) (Gdx.graphics.getWidth() - iconOffset * ++iconIndex),
 				(int) iconBorderMargin,
 				iconId,
@@ -111,11 +111,11 @@ public class FeatureScreenSetupSystem extends PassiveSystem {
 
 		// approximate percentage of screen size with logo. Use rounded numbers to keep the logo crisp.
 
-		final Entity entity = assetSystem.createAnimCenteredAt(world,
+		final Entity entity = Anims.createCenteredAt(world,
 				FeatureScreenAssetSystem.LOGO_WIDTH,
 				FeatureScreenAssetSystem.LOGO_HEIGHT,
 				"logo",
-				assetSystem.scaleToScreenRounded(0.8f, FeatureScreenAssetSystem.LOGO_WIDTH));
+				Anims.scaleToScreenRounded(0.8f, FeatureScreenAssetSystem.LOGO_WIDTH));
 
 		entity.edit()
 				.add(new Color(COLOR_LOGO_FADED))

@@ -5,7 +5,6 @@ import com.artemis.World;
 import com.artemis.annotations.Wire;
 import com.artemis.utils.EntityBuilder;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import net.mostlyoriginal.api.component.basic.Pos;
 import net.mostlyoriginal.api.component.graphics.Anim;
@@ -41,32 +40,6 @@ public class FeatureScreenAssetSystem extends AbstractAssetSystem {
 	@Override
 	public Animation get(String identifier) {
 		return super.get(identifier);
-	}
-
-	public int scaleToScreenRounded(float percentageOfScreen, int pixelWidth) {
-		return Math.max(1, (int)scaleToScreen(percentageOfScreen, pixelWidth));
-	}
-
-	/** Returns pixel perfect zoom that approximates screen percentage. */
-	private float scaleToScreen(float percentageOfScreen, int pixelWidth) {
-		return ((Gdx.graphics.getWidth() * percentageOfScreen) / pixelWidth);
-	}
-
-	public Entity createAnimCenteredAt(World world, int width, int height, String animId, float zoom) {
-		return createAnimAt(world,
-				(int)((Gdx.graphics.getWidth() / 2) - ((width / 2) * zoom)),
-				(int)((Gdx.graphics.getHeight() / 2) - ((height / 2) * zoom)),
-				animId,
-				zoom);
-	}
-
-	public Entity createAnimAt(World world, int x, int y, String animId, float scale) {
-
-		final Anim anim = new Anim(animId);
-		anim.scale= scale;
-		return new EntityBuilder(world)
-				.with(Renderable.class)
-				.with(new Pos(x, y), anim).build();
 	}
 
 }
