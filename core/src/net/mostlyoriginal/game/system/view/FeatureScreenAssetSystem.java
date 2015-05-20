@@ -52,8 +52,8 @@ public class FeatureScreenAssetSystem extends AbstractAssetSystem {
 		return ((Gdx.graphics.getWidth() * percentageOfScreen) / pixelWidth);
 	}
 
-	public void createAnimCenteredAt(World world, int width, int height, String animId, float zoom) {
-		createAnimAt(world,
+	public Entity createAnimCenteredAt(World world, int width, int height, String animId, float zoom) {
+		return createAnimAt(world,
 				(int)((Gdx.graphics.getWidth() / 2) - ((width / 2) * zoom)),
 				(int)((Gdx.graphics.getHeight() / 2) - ((height / 2) * zoom)),
 				animId,
