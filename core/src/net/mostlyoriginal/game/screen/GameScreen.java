@@ -23,19 +23,14 @@ public class GameScreen extends WorldScreen {
 
 	@Override
 	protected World createWorld() {
-
-		final World world = new WorldBuilder()
+	return new WorldBuilder()
 				.with(
 						// Replace with your own systems!
 						instanceDancingManSystems()
 				).initialize();
-
-		// any manual initialization here.
-
-		return world;
 	}
 
-	/**  */
+	/** Just get a basic dancing man going! */
 	private BaseSystem[] instanceDancingManSystems() {
 		RenderBatchingSystem renderBatchingSystem;
 		return new BaseSystem[]{

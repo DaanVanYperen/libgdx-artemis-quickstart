@@ -33,7 +33,8 @@ public class OdbFeatureScreen extends WorldScreen {
 	protected World createWorld() {
 
 		final RenderBatchingSystem renderBatchingSystem;
-		World world = new WorldBuilder()
+
+		return new WorldBuilder()
 				.with(
 						new TagManager()
 				)
@@ -54,8 +55,6 @@ public class OdbFeatureScreen extends WorldScreen {
 						new AnimRenderSystem(renderBatchingSystem),
 						new FeatureScreenSetupSystem()
 				).initialize();
-
-		return world;
 	}
 
 }
