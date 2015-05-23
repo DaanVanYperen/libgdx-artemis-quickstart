@@ -19,13 +19,15 @@ import net.mostlyoriginal.game.system.view.GameScreenSetupSystem;
  */
 public class GameScreen extends WorldScreen {
 
+	public static final String BACKGROUND_COLOR_HEX = "969291";
+
 	@Override
 	protected World createWorld() {
 
 		final World world = new WorldBuilder()
 				.with(
 						// Replace with your own systems!
-						getDancingManSystems()
+						instanceDancingManSystems()
 				).initialize();
 
 		// any manual initialization here.
@@ -34,13 +36,13 @@ public class GameScreen extends WorldScreen {
 	}
 
 	/**  */
-	private BaseSystem[] getDancingManSystems() {
+	private BaseSystem[] instanceDancingManSystems() {
 		RenderBatchingSystem renderBatchingSystem;
 		return new BaseSystem[]{
 
 				new CameraSystem(1),
 
-				new ClearScreenSystem(Color.valueOf("969291")),
+				new ClearScreenSystem(Color.valueOf(BACKGROUND_COLOR_HEX)),
 				new GameScreenAssetSystem(),
 				new GameScreenSetupSystem(),
 
