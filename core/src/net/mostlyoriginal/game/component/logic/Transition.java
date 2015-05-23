@@ -4,7 +4,7 @@ import com.artemis.Component;
 import com.badlogic.gdx.Screen;
 
 /**
- * Transition between screens.
+ * Transition helper between screens.
  *
  * @author Daan van Yperen
  */
