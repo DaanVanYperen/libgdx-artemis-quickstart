@@ -1,46 +1,68 @@
 libgdx-artemis-quickstart
 =========================
 
-Quickstart for desktop and html libgdx artemis-odb based jam games.
+Quickstart for libgdx artemis-odb based games.
 
-Contains a very basic game that demos some typical systems and components.
-
-[Play Slumber here](http://www.mostlyoriginal.net/play-slumber/)
+Preconfigured for artemis-odb advanced features. Contains
+a logo screen with artemis feature detection and minimal
+game scaffold.
 
 ### When to use this
 
-If you want artemis-odb with LibGDX's new gradle setup, or you need
-some quick ideas for an entry level component/system setup, a fork
-will get you up and running quickly.
+If you want artemis-odb with weaving, entity factories and 
+LibGDX's gradle, a fork will get you up and running quickly.
 
-I use this as my launchpad for jam games. You are welcome to use
-it for whatever you need. I might separate the component/systems
-into a library later, no guarantees. ;)
+I use this as my quickstart for jam games. You are welcome 
+to use it for whatever you need.
+
+### Where to start
+
+Edit `net.mostlyoriginal.game.screen.GameScreen` and start
+adding systems!
+
+Running the game displays a odb feature splash screen,
+before transitioning to your game.
+
+### Feature detection!
+
+Splash screen icons show available features:
+
+| Icon                  | Platform supports/feature active
+|-----------------------|----------------------------------
+| Three big squares     | @PackedWeaver
+| Tiny squares in a box | @PooledWeaver
+| Linked squares        | Hotspot optimization
+| Factory icon          | ODB Factories
+
+### Platform cheat sheet
+
+| Platform        | [odb weaving](https://github.com/junkdog/artemis-odb/wiki/Bytecode-weaving)  | [entity factory](https://github.com/junkdog/artemis-odb/wiki/EntityFactory) | quickstart
+|-----------------|----------|----------------|--------------------
+| Desktop         | ✓        | ✓ | `gradlew desktop:run`
+| Android         | ✓        | ✓ | `gradlew android:installDebug android:run`, launch emulator first.
+| iOS             | ✓        | ✓ | `gradlew ios:launchIPhoneSimulator`
+| HTML5/GWT       | -        | ✓ | `gradlew html:superDev`, browse to `http://localhost:8080/html`
+
+✓ supported, - not supported
 
 ### Library Versions
 
-LibGDX 1.5.3 and Artemis-ODB 0.9
-(LibGDX version can be changed in /build.gradle)
+LibGDX 1.6.1, Artemis-odb 0.9.1-SNAPSHOT, Artemis-odb-contrib 0.9.1
 
-Tested for desktop:dist and html:dist targets. Others targets might function too. ;)
+Alter library versions and enable gdx modules in /build.gradle
 
-### Organization
+### Weaving
 
-net.mostlyoriginal.api contains all generic example components/systems.
-net.mostlyoriginal.game contains an example game.
+Weaving and entity factory creation are part of the core build step.
 
-- Entrypoint for your game is ```net.mostlyoriginal.game.MyGame```
-- Configure and add systems in ```net.mostlyoriginal.game.MainScreen```
-- Resolution can be changed in G.java
+### GWT and Reflection
 
-### Special note on Reflection
+GWT lacks reflection so the build process creates a reflection cache. 
 
-GWT lacks reflection so the build process creates a reflection cache. To use
-```@Wire``` make sure your components, managers and systems are placed under
-the premade component, manager and system packages.
+To use `@Wire` make sure your components, managers and systems are 
+placed under the premade component, manager and system packages.
 
-Artemis does not share libgdx's reflection cache, so if you get gwt reflection
-related errors you might need to add classes to Libgdx's cache manually.
-Artemis reflection cache errors are prefixed with artemis-odb.
+There are TWO reflection caches, one for LibGDX, one for Artemis-ODB.
+Artemis reflection cache errors are prefixed with `artemis-odb`.
 
 ```

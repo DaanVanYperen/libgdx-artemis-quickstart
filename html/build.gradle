@@ -3,7 +3,7 @@ apply plugin: "jetty"
 
 gwt {
     gwtVersion='2.6.0' // Should match the gwt version used for building the gwt backend
-    maxHeapSize="2G" // Default 256m is not enough for gwt compiler. GWT is HUNGRY
+    maxHeapSize="1G" // Default 256m is not enough for gwt compiler. GWT is HUNGRY
     minHeapSize="1G"
 
     src = files(file("src/")) // Needs to be in front of "modules" below.
@@ -27,10 +27,12 @@ task draftRun(type: JettyRunWar) {
 
 task superDev(type: de.richsource.gradle.plugins.gwt.GwtSuperDev) {
     dependsOn draftRun
-    gwt.modules = gwt.devModules
+    doFirst {
+    	gwt.modules = gwt.devModules
+    }
 }
 
-task dist(dependsOn: compileGwt) {
+task dist(dependsOn: [clean, compileGwt]) {
     doLast {
         file("build/dist").mkdirs()
         copy {
@@ -52,11 +54,17 @@ draftWar {
    from "war"
 }
 
+task addSource << {
+	sourceSets.main.compileClasspath += files(project(':core').sourceSets.main.allJava.srcDirs)
+}
+
+tasks.compileGwt.dependsOn(addSource)
+tasks.draftCompileGwt.dependsOn(addSource)
+
 sourceCompatibility = 1.7
 sourceSets.main.java.srcDirs = [ "src/" ]
-sourceSets.main.compileClasspath += files(project(':core').sourceSets.main.allJava.srcDirs)
 
 
 eclipse.project {
-    name = appName + "-gwt"
+    name = appName + "-html"
 }
