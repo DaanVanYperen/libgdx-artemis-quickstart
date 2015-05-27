@@ -4,8 +4,8 @@ libgdx-artemis-quickstart
 Quickstart for libgdx artemis-odb based games.
 
 Preconfigured for artemis-odb advanced features. Contains
-a logo screen with artemis feature detection and game
-scaffolding.
+a logo screen with artemis feature detection and minimal
+game scaffold.
 
 ### When to use this
 
@@ -23,6 +23,17 @@ adding systems!
 Running the game displays a odb feature splash screen,
 before transitioning to your game.
 
+### Feature detection!
+
+Splash screen icons show available features:
+
+| Icon                  | Platform supports/feature active
+|-----------------------|----------------------------------
+| Three big squares     | @PackedWeaver
+| Tiny squares in a box | @PooledWeaver
+| Linked squares        | Hotspot optimization
+| Factory icon          | ODB Factories
+
 ### Platform cheat sheet
 
 | Platform        | [odb weaving](https://github.com/junkdog/artemis-odb/wiki/Bytecode-weaving)  | [entity factory](https://github.com/junkdog/artemis-odb/wiki/EntityFactory) | quickstart
@@ -36,7 +47,7 @@ before transitioning to your game.
 
 ### Library Versions
 
-LibGDX 1.6.0 and Artemis-ODB 0.9.1-SNAPSHOT
+LibGDX 1.6.1, Artemis-odb 0.9.1-SNAPSHOT, Artemis-odb-contrib 0.9.1
 
 Alter library versions and enable gdx modules in /build.gradle
 
