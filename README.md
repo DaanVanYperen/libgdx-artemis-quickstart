@@ -1,7 +1,7 @@
 libgdx-artemis-quickstart
 =========================
 
-+[![Build Status](https://travis-ci.org/DaanVanYperen/libgdx-artemis-quickstart.svg)](https://travis-ci.org/DaanVanYperen/libgdx-artemis-quickstart)
+[![Build Status](https://travis-ci.org/DaanVanYperen/libgdx-artemis-quickstart.svg)](https://travis-ci.org/DaanVanYperen/libgdx-artemis-quickstart)
 
 Quickstart for libgdx artemis-odb based games.
 
