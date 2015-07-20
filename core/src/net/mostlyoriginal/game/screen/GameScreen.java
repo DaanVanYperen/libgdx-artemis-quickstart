@@ -8,7 +8,7 @@ import net.mostlyoriginal.api.system.camera.CameraSystem;
 import net.mostlyoriginal.api.system.graphics.RenderBatchingSystem;
 import net.mostlyoriginal.api.system.render.AnimRenderSystem;
 import net.mostlyoriginal.api.system.render.ClearScreenSystem;
-import net.mostlyoriginal.api.utils.builder.WorldBuilder;
+import net.mostlyoriginal.api.utils.builder.WorldConfigurationBuilder;
 import net.mostlyoriginal.game.system.view.GameScreenAssetSystem;
 import net.mostlyoriginal.game.system.view.GameScreenSetupSystem;
 
@@ -23,11 +23,11 @@ public class GameScreen extends WorldScreen {
 
 	@Override
 	protected World createWorld() {
-	return new WorldBuilder()
+	return new World(new WorldConfigurationBuilder()
 				.with(
 						// Replace with your own systems!
 						instanceDancingManSystems()
-				).initialize();
+				).build());
 	}
 
 	/** Just get a basic dancing man going! */
