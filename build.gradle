@@ -193,6 +193,7 @@ project(":matrix") {
         main = 'com.artemis.cli.CliApplication'
         args '-c', "$rootProject.projectDir/core/build/classes/main/"
     }
+    build.finalizedBy generateMatrix
 }
 
 tasks.eclipse.doLast {
