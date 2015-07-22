@@ -180,6 +180,21 @@ project(":core") {
     }
 }
 
+project(":matrix") {
+    apply plugin: "java"
+
+    dependencies {
+        compile project(":core")
+        compile "net.onedaybeard.ecs:matrix-cli:0.1.0"
+    }
+
+    task generateMatrix(type: JavaExec) {
+        classpath = sourceSets.main.runtimeClasspath
+        main = 'com.artemis.cli.CliApplication'
+        args '-c', "$rootProject.projectDir/core/build/classes/main/"
+    }
+}
+
 tasks.eclipse.doLast {
     delete ".project"
 }

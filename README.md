@@ -57,6 +57,10 @@ Alter library versions and enable gdx modules in /build.gradle
 
 Weaving and entity factory creation are part of the core build step.
 
+### Generating component/system matrix
+
+`gradlew generateMatrix`
+
 ### GWT and Reflection
 
 GWT lacks reflection so the build process creates a reflection cache. 
