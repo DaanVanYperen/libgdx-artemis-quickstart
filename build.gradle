@@ -185,7 +185,7 @@ project(":matrix") {
 
     dependencies {
         compile project(":core")
-        compile "net.onedaybeard.ecs:matrix-cli:0.1.0"
+        compile "net.onedaybeard.ecs:matrix-cli:0.1.1"
     }
 
     task generateMatrix(type: JavaExec) {
