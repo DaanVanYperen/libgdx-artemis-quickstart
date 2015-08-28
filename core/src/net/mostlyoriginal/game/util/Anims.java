@@ -43,8 +43,13 @@ public class Anims {
 
 		final Anim anim = new Anim(animId);
 		anim.scale= scale;
-		return new EntityBuilder(world)
-				.with(Renderable.class)
-				.with(new Pos(x, y), anim).build();
+
+		final Entity entity = new EntityBuilder(world)
+				.with(Renderable.class, Pos.class)
+				.with(anim).build();
+
+		entity.getComponent(Pos.class).set(x,y);
+
+		return entity;
 	}
 }
