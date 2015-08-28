@@ -20,7 +20,7 @@ allprojects {
     apply plugin: "eclipse"
     apply plugin: "idea"
 
-    version = '1.2.0'
+    version = '1.2.2'
     ext {
         appName = 'libgdx-artemis-quickstart'
         gdxVersion = '1.6.4'
