@@ -49,13 +49,15 @@ Splash screen icons show available features:
 
 ### Library Versions
 
-LibGDX 1.6.4, Artemis-odb 0.11.4, Artemis-odb-contrib 0.11.4
+LibGDX 1.6.4, Artemis-odb 0.11.4, Artemis-odb-contrib 0.11.4, 
 
 Alter library versions and enable gdx modules in /build.gradle
 
 ### Weaving
 
 Weaving and entity factory creation are part of the core build step.
+
+Gradle plugin requires Gradle 2.2+!
 
 ### Generating component/system matrix
 
