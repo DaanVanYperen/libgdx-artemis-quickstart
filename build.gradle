@@ -13,7 +13,7 @@
 
         // lib for artemis-odb weaving.
         // see https://github.com/junkdog/artemis-odb/wiki/Bytecode-weaving
-        classpath 'net.onedaybeard.artemis:artemis-odb-gradle-plugin:0.11.4'
+        classpath 'net.onedaybeard.artemis:artemis-odb-gradle-plugin:0.11.5-SNAPSHOT'
     }
 }
 
