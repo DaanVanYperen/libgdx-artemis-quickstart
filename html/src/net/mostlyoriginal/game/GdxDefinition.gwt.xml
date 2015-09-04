@@ -5,6 +5,7 @@
     <inherits name='com.artemis.backends.artemis_backends_gwt' />
 	<inherits name='net.mostlyoriginal.ContribJam' />
 	<inherits name='net.mostlyoriginal.ContribEventBus' />
+	<inherits name='net.mostlyoriginal.ContribPluginOperations' />
 	<!--<inherits name='com.badlogic.gdx.physics.box2d.box2d-gwt' />
 	<inherits name='Box2DLights' />
 	<inherits name='com.badlogic.gdx.ai' />-->

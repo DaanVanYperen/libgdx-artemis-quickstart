@@ -11,6 +11,7 @@ import net.mostlyoriginal.api.system.render.ClearScreenSystem;
 import net.mostlyoriginal.api.utils.builder.WorldConfigurationBuilder;
 import net.mostlyoriginal.game.system.view.GameScreenAssetSystem;
 import net.mostlyoriginal.game.system.view.GameScreenSetupSystem;
+import net.mostlyoriginal.plugin.OperationsPlugin;
 
 /**
  * Example main game screen.
@@ -23,14 +24,17 @@ public class GameScreen extends WorldScreen {
 
 	@Override
 	protected World createWorld() {
-	return new World(new WorldConfigurationBuilder()
+		return new World(new WorldConfigurationBuilder()
+				.dependsOn(OperationsPlugin.class)
 				.with(
 						// Replace with your own systems!
 						instanceDancingManSystems()
 				).build());
 	}
 
-	/** Just get a basic dancing man going! */
+	/**
+	 * Just get a basic dancing man going!
+	 */
 	private BaseSystem[] instanceDancingManSystems() {
 		RenderBatchingSystem renderBatchingSystem;
 		return new BaseSystem[]{
