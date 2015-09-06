@@ -143,6 +143,7 @@ project(":html") {
         compile "net.onedaybeard.artemis:artemis-odb-gwt:$artemisVersion"
         compile "net.onedaybeard.artemis:artemis-odb-gwt:$artemisVersion:sources"
         compile "net.onedaybeard.artemis:artemis-odb:$artemisVersion:sources"
+        compile "net.onedaybeard.artemis:artemis-odb-serializer-json-libgdx:$artemisVersion:sources"
 
         // Artemis-odb bonus functionality (systems, events, components).
         compile "net.mostlyoriginal.artemis-odb:contrib-core:$artemisContribVersion:sources"
@@ -178,6 +179,8 @@ project(":core") {
 
         // Artemis-odb
         compile "net.onedaybeard.artemis:artemis-odb:$artemisVersion"
+        compile "net.onedaybeard.artemis:artemis-odb-serializer-json-libgdx:$artemisVersion"
+
         // Artemis-odb annotation processor (see https://github.com/junkdog/artemis-odb/wiki/EntityFactory)
         provided "net.onedaybeard.artemis:artemis-odb-processor:$artemisVersion"
 
