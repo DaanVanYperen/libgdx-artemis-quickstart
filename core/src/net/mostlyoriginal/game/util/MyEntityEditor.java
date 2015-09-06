@@ -20,4 +20,11 @@ public class MyEntityEditor extends EntityEditor<MyEntityEditor> {
 		schedule.operation.add(operation);
 		return this;
 	}
+
+	public MyEntityEditor schedule(Operation o1, Operation o2) {
+		Schedule schedule = add(Schedule.class);
+		schedule.operation.add(o1);
+		schedule.operation.add(o2);
+		return this;
+	}
 }

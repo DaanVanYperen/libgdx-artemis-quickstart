@@ -5,7 +5,9 @@ import com.artemis.annotations.Wire;
 import com.artemis.managers.TagManager;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Interpolation;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import net.mostlyoriginal.api.component.graphics.Tint;
+import net.mostlyoriginal.api.operation.JamOperationFactory;
 import net.mostlyoriginal.api.system.core.PassiveSystem;
 import net.mostlyoriginal.game.component.detection.OdbFeatureComponent;
 import net.mostlyoriginal.game.screen.GameScreen;
@@ -14,6 +16,7 @@ import net.mostlyoriginal.game.system.logic.TransitionSystem;
 import net.mostlyoriginal.game.util.Anims;
 import net.mostlyoriginal.game.util.MyEntityEditor;
 
+import static net.mostlyoriginal.api.operation.JamOperationFactory.*;
 import static net.mostlyoriginal.api.operation.OperationFactory.*;
 import static net.mostlyoriginal.api.utils.Duration.seconds;
 
@@ -76,9 +79,12 @@ public class FeatureScreenSetupSystem extends PassiveSystem {
 		final float scale = Anims.scaleToScreenRounded(0.08f, FeatureScreenAssetSystem.FEATURE_WIDTH);
 		final float iconBorderMargin = scale * FEATURE_BORDER_MARGIN;
 		final float iconOffset = ((scale * FeatureScreenAssetSystem.FEATURE_WIDTH) + iconBorderMargin);
+
+		float cX = Gdx.graphics.getWidth() - iconOffset * ++iconIndex;
+		float cY = iconBorderMargin;
 		final Entity entity = Anims.createAnimAt(world,
-				(int) (Gdx.graphics.getWidth() - iconOffset * ++iconIndex),
-				(int) iconBorderMargin,
+				(int) cX,
+				(int) cY,
 				iconId,
 				scale);
 
@@ -89,6 +95,10 @@ public class FeatureScreenSetupSystem extends PassiveSystem {
 					.schedule(
 							sequence(
 									delay(seconds(0.5f + iconIndex * 0.1f)),
+									moveBetween(cX,-50, cX,cY, 1f, Interpolation.fade)
+							),
+							sequence(
+									delay(seconds(0.5f + iconIndex * 0.1f)),
 									tween(TINT_FEATURE_OFF, TINE_FEATURE_ON_OFF, seconds(2)),
 									tween(TINE_FEATURE_ON_OFF, TINT_FEATURE_ON, seconds(2))
 							));
@@ -97,6 +107,10 @@ public class FeatureScreenSetupSystem extends PassiveSystem {
 					.edit(entity)
 					.tint(COLOR_FEATURE_OFF)
 					.schedule(
+							sequence(
+									delay(seconds(0.5f + iconIndex * 0.1f)),
+									moveBetween(cX,-50, cX,cY, 1f, Interpolation.fade)
+							),
 							sequence(
 									delay(seconds(0.5f + iconIndex * 0.1f)),
 									tween(TINT_FEATURE_OFF, TINT_FEATURE_FADED, seconds(2))
