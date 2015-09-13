@@ -5,18 +5,17 @@ import com.artemis.annotations.Wire;
 import com.artemis.managers.TagManager;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Interpolation;
-import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import net.mostlyoriginal.api.component.graphics.Tint;
-import net.mostlyoriginal.api.operation.JamOperationFactory;
 import net.mostlyoriginal.api.system.core.PassiveSystem;
 import net.mostlyoriginal.game.component.detection.OdbFeatureComponent;
 import net.mostlyoriginal.game.screen.GameScreen;
 import net.mostlyoriginal.game.system.detection.OdbFeatureDetectionSystem;
 import net.mostlyoriginal.game.system.logic.TransitionSystem;
 import net.mostlyoriginal.game.util.Anims;
-import net.mostlyoriginal.game.util.MyEntityEditor;
+import net.mostlyoriginal.game.util.E;
 
-import static net.mostlyoriginal.api.operation.JamOperationFactory.*;
+import static net.mostlyoriginal.api.operation.JamOperationFactory.moveBetween;
+import static net.mostlyoriginal.api.operation.JamOperationFactory.scaleBetween;
 import static net.mostlyoriginal.api.operation.OperationFactory.*;
 import static net.mostlyoriginal.api.utils.Duration.seconds;
 
@@ -89,13 +88,12 @@ public class FeatureScreenSetupSystem extends PassiveSystem {
 				scale);
 
 		if (state) {
-			MyEntityEditor.instance()
-					.edit(entity)
+			E.edit(entity)
 					.tint(COLOR_FEATURE_OFF)
 					.schedule(
 							sequence(
 									delay(seconds(0.5f + iconIndex * 0.1f)),
-									moveBetween(cX,-50, cX,cY, 1f, Interpolation.fade)
+									moveBetween(cX, -50, cX, cY, 1f, Interpolation.fade)
 							),
 							sequence(
 									delay(seconds(0.5f + iconIndex * 0.1f)),
@@ -103,13 +101,12 @@ public class FeatureScreenSetupSystem extends PassiveSystem {
 									tween(TINE_FEATURE_ON_OFF, TINT_FEATURE_ON, seconds(2))
 							));
 		} else {
-			MyEntityEditor.instance()
-					.edit(entity)
+			E.edit(entity)
 					.tint(COLOR_FEATURE_OFF)
 					.schedule(
 							sequence(
 									delay(seconds(0.5f + iconIndex * 0.1f)),
-									moveBetween(cX,-50, cX,cY, 1f, Interpolation.fade)
+									moveBetween(cX, -50, cX, cY, 1f, Interpolation.fade)
 							),
 							sequence(
 									delay(seconds(0.5f + iconIndex * 0.1f)),
@@ -122,17 +119,20 @@ public class FeatureScreenSetupSystem extends PassiveSystem {
 
 		// approximate percentage of screen size with logo. Use rounded numbers to keep the logo crisp.
 
+		float zoom = Anims.scaleToScreenRounded(0.8f, FeatureScreenAssetSystem.LOGO_WIDTH);
 		final Entity entity = Anims.createCenteredAt(world,
 				FeatureScreenAssetSystem.LOGO_WIDTH,
 				FeatureScreenAssetSystem.LOGO_HEIGHT,
 				"logo",
-				Anims.scaleToScreenRounded(0.8f, FeatureScreenAssetSystem.LOGO_WIDTH));
+				zoom);
 
-		MyEntityEditor.instance().edit(entity)
+		E.edit(entity)
 				.tint(COLOR_LOGO_FADED)
 				.schedule(
+						scaleBetween(zoom * 2, zoom, 2f, Interpolation.bounceOut),
 						tween(new Tint(COLOR_LOGO_FADED), new Tint(COLOR_LOGO_FULL), 2f, Interpolation.fade)
 				);
+
 	}
 
 	public static final int DISPLAY_SECONDS = 2;

@@ -2,11 +2,7 @@ package net.mostlyoriginal.game.util;
 
 import com.artemis.Entity;
 import com.artemis.World;
-import com.artemis.utils.EntityBuilder;
 import com.badlogic.gdx.Gdx;
-import net.mostlyoriginal.api.component.basic.Pos;
-import net.mostlyoriginal.api.component.graphics.Anim;
-import net.mostlyoriginal.api.component.graphics.Renderable;
 
 /**
  * @author Daan van Yperen
@@ -40,16 +36,11 @@ public class Anims {
 	}
 
 	public static Entity createAnimAt(World world, int x, int y, String animId, float scale) {
-
-		final Anim anim = new Anim(animId);
-		anim.scale= scale;
-
-		final Entity entity = new EntityBuilder(world)
-				.with(Renderable.class, Pos.class)
-				.with(anim).build();
-
-		entity.getComponent(Pos.class).set(x,y);
-
-		return entity;
+		return E.create(world)
+				.renderable(0)
+				.pos(x, y)
+				.anim(animId)
+				.scale(scale)
+				.build();
 	}
 }

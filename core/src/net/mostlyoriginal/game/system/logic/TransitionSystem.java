@@ -8,9 +8,8 @@ import com.artemis.systems.EntityProcessingSystem;
 import com.artemis.utils.reflect.ClassReflection;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Screen;
-import net.mostlyoriginal.api.utils.Duration;
 import net.mostlyoriginal.game.component.logic.Transition;
-import net.mostlyoriginal.game.util.MyEntityEditor;
+import net.mostlyoriginal.game.util.E;
 
 import static net.mostlyoriginal.api.operation.OperationFactory.*;
 import static net.mostlyoriginal.api.utils.Duration.*;
@@ -35,7 +34,7 @@ public class TransitionSystem extends EntityProcessingSystem {
 	 * Transition to screen after delay in seconds.
 	 */
 	public void transition(Class<? extends Screen> screen, float delay) {
-		MyEntityEditor.instance().create(world)
+		E.create(world)
 				.schedule(
 						sequence(
 								delay(seconds(delay)),
