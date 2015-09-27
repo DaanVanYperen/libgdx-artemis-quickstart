@@ -2,13 +2,13 @@ package net.mostlyoriginal.game.screen;
 
 import com.artemis.BaseSystem;
 import com.artemis.World;
+import com.artemis.WorldConfigurationBuilder;
 import com.badlogic.gdx.graphics.Color;
 import net.mostlyoriginal.api.screen.core.WorldScreen;
 import net.mostlyoriginal.api.system.camera.CameraSystem;
 import net.mostlyoriginal.api.system.graphics.RenderBatchingSystem;
 import net.mostlyoriginal.api.system.render.AnimRenderSystem;
 import net.mostlyoriginal.api.system.render.ClearScreenSystem;
-import net.mostlyoriginal.api.utils.builder.WorldConfigurationBuilder;
 import net.mostlyoriginal.game.system.view.GameScreenAssetSystem;
 import net.mostlyoriginal.game.system.view.GameScreenSetupSystem;
 import net.mostlyoriginal.plugin.OperationsPlugin;
