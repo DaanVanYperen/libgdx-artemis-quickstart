@@ -6,8 +6,8 @@ buildscript {
         gdxVersion = '1.7.0'
         artemisVersion = '1.0.0-SNAPSHOT'
         artemisContribVersion = '1.1.0-SNAPSHOT'
-        //box2DLightsVersion = '1.3'
-        //aiVersion = '1.5.0'
+        //box2DLightsVersion = '1.4'
+        //aiVersion = '1.6.0'
 
         roboVMVersion = '1.8.0'
     }
