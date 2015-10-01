@@ -88,31 +88,39 @@ public class FeatureScreenSetupSystem extends PassiveSystem {
 				scale);
 
 		if (state) {
-			E.edit(entity)
-					.tint(COLOR_FEATURE_OFF)
-					.schedule(
-							sequence(
-									delay(seconds(0.5f + iconIndex * 0.1f)),
-									moveBetween(cX, -50, cX, cY, 1f, Interpolation.fade)
-							),
-							sequence(
-									delay(seconds(0.5f + iconIndex * 0.1f)),
-									tween(TINT_FEATURE_OFF, TINE_FEATURE_ON_OFF, seconds(2)),
-									tween(TINE_FEATURE_ON_OFF, TINT_FEATURE_ON, seconds(2))
-							));
+			animateAvailable(cX, cY, entity);
 		} else {
-			E.edit(entity)
-					.tint(COLOR_FEATURE_OFF)
-					.schedule(
-							sequence(
-									delay(seconds(0.5f + iconIndex * 0.1f)),
-									moveBetween(cX, -50, cX, cY, 1f, Interpolation.fade)
-							),
-							sequence(
-									delay(seconds(0.5f + iconIndex * 0.1f)),
-									tween(TINT_FEATURE_OFF, TINT_FEATURE_FADED, seconds(2))
-							));
+			animateMissing(cX, cY, entity);
 		}
+	}
+
+	private void animateMissing(float cX, float cY, Entity entity) {
+		E.edit(entity)
+				.tint(COLOR_FEATURE_OFF)
+				.schedule(
+						sequence(
+								delay(seconds(0.5f + iconIndex * 0.1f)),
+								moveBetween(cX, -50, cX, cY, 1f, Interpolation.fade)
+						),
+						sequence(
+								delay(seconds(0.5f + iconIndex * 0.1f)),
+								tween(TINT_FEATURE_OFF, TINT_FEATURE_FADED, seconds(2))
+						));
+	}
+
+	private void animateAvailable(float cX, float cY, Entity entity) {
+		E.edit(entity)
+				.tint(COLOR_FEATURE_OFF)
+				.schedule(
+						sequence(
+								delay(seconds(0.5f + iconIndex * 0.1f)),
+								moveBetween(cX, -50, cX, cY, 1f, Interpolation.fade)
+						),
+						sequence(
+								delay(seconds(0.5f + iconIndex * 0.1f)),
+								tween(TINT_FEATURE_OFF, TINE_FEATURE_ON_OFF, seconds(2)),
+								tween(TINE_FEATURE_ON_OFF, TINT_FEATURE_ON, seconds(2))
+						));
 	}
 
 	public void addLogo() {
