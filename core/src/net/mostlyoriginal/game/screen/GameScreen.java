@@ -1,6 +1,5 @@
 package net.mostlyoriginal.game.screen;
 
-import com.artemis.BaseSystem;
 import com.artemis.World;
 import com.artemis.WorldConfigurationBuilder;
 import com.badlogic.gdx.graphics.Color;
@@ -24,29 +23,18 @@ public class GameScreen extends WorldScreen {
 
 	@Override
 	protected World createWorld() {
+		RenderBatchingSystem renderBatchingSystem;
 		return new World(new WorldConfigurationBuilder()
 				.dependsOn(OperationsPlugin.class)
 				.with(
 						// Replace with your own systems!
-						instanceDancingManSystems()
+						new CameraSystem(1),
+						new ClearScreenSystem(Color.valueOf(BACKGROUND_COLOR_HEX)),
+						new GameScreenAssetSystem(),
+						new GameScreenSetupSystem(),
+						renderBatchingSystem = new RenderBatchingSystem(),
+						new AnimRenderSystem(renderBatchingSystem)
 				).build());
 	}
 
-	/**
-	 * Just get a basic dancing man going!
-	 */
-	private BaseSystem[] instanceDancingManSystems() {
-		RenderBatchingSystem renderBatchingSystem;
-		return new BaseSystem[]{
-
-				new CameraSystem(1),
-
-				new ClearScreenSystem(Color.valueOf(BACKGROUND_COLOR_HEX)),
-				new GameScreenAssetSystem(),
-				new GameScreenSetupSystem(),
-
-				renderBatchingSystem = new RenderBatchingSystem(),
-				new AnimRenderSystem(renderBatchingSystem),
-		};
-	}
 }

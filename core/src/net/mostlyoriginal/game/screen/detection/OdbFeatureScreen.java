@@ -29,18 +29,15 @@ public class OdbFeatureScreen extends WorldScreen {
 
 		return new World(new WorldConfigurationBuilder()
 				.dependsOn(OperationsPlugin.class)
-				.with(
-						new TagManager()
-				)
 				.with(WorldConfigurationBuilder.Priority.HIGH,
 						// supportive
+						new TagManager(),
 						new CameraSystem(1),
 						new FeatureScreenAssetSystem(),
 						new OdbFeatureDetectionSystem()
 				).with(WorldConfigurationBuilder.Priority.LOW,
 						// processing
-						new TransitionSystem(GdxArtemisGame.getInstance())
-				).with(WorldConfigurationBuilder.Priority.LOW,
+						new TransitionSystem(GdxArtemisGame.getInstance()),
 						// animation
 						new ClearScreenSystem(Color.valueOf("969291")),
 						renderBatchingSystem = new RenderBatchingSystem(),
