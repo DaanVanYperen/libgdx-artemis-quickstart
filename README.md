@@ -49,7 +49,7 @@ Splash screen icons show available features:
 
 ### Library Versions
 
-LibGDX 1.7.0, Artemis-odb 1.0.0-SNAPSHOT, Artemis-odb-contrib 1.1.0-SNAPSHOT
+LibGDX 1.7.0, Artemis-odb 1.0.0, Artemis-odb-contrib 1.1.0
 
 Alter library versions and enable gdx modules in /build.gradle
 
