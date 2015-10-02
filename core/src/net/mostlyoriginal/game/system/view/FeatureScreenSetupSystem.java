@@ -5,16 +5,19 @@ import com.artemis.annotations.Wire;
 import com.artemis.managers.TagManager;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Interpolation;
-import net.mostlyoriginal.api.component.graphics.Color;
-import net.mostlyoriginal.api.component.graphics.ColorAnimation;
-import net.mostlyoriginal.api.component.graphics.InterpolationStrategy;
-import net.mostlyoriginal.api.component.script.Schedule;
+import net.mostlyoriginal.api.component.graphics.Tint;
 import net.mostlyoriginal.api.system.core.PassiveSystem;
 import net.mostlyoriginal.game.component.detection.OdbFeatureComponent;
 import net.mostlyoriginal.game.screen.GameScreen;
 import net.mostlyoriginal.game.system.detection.OdbFeatureDetectionSystem;
 import net.mostlyoriginal.game.system.logic.TransitionSystem;
 import net.mostlyoriginal.game.util.Anims;
+import net.mostlyoriginal.game.util.E;
+
+import static net.mostlyoriginal.api.operation.JamOperationFactory.moveBetween;
+import static net.mostlyoriginal.api.operation.JamOperationFactory.scaleBetween;
+import static net.mostlyoriginal.api.operation.OperationFactory.*;
+import static net.mostlyoriginal.api.utils.Duration.seconds;
 
 /**
  * @author Daan van Yperen
@@ -23,12 +26,16 @@ import net.mostlyoriginal.game.util.Anims;
 public class FeatureScreenSetupSystem extends PassiveSystem {
 
 	public static final int FEATURE_BORDER_MARGIN = 1;
-	public static final Color COLOR_FEATURE_FADED = new Color(0.8f, 1.0f, 1.0f, 0.3f);
-	public static final Color COLOR_FEATURE_OFF = new Color(0.8f, 1.0f, 1.0f, 0.0f);
-	public static final Color COLOR_FEATURE_ON_OFF_COLOR = new Color(0.8f, 1.0f, 1.0f, 1.0f);
-	public static final Color COLOR_FEATURE_ON = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-	public static final Color COLOR_LOGO_FADED = new Color(1.0f, 1.0f, 1.0f, 0.0f);
-	public static final Color COLOR_LOGO_FULL = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+	public static final Tint COLOR_FEATURE_FADED = new Tint(0.8f, 1.0f, 1.0f, 0.3f);
+	private final Tint TINT_FEATURE_FADED = new Tint(COLOR_FEATURE_FADED);
+	public static final Tint COLOR_FEATURE_OFF = new Tint(0.8f, 1.0f, 1.0f, 0.0f);
+	private final Tint TINT_FEATURE_OFF = new Tint(COLOR_FEATURE_OFF);
+	public static final Tint COLOR_FEATURE_ON_OFF_COLOR = new Tint(0.8f, 1.0f, 1.0f, 1.0f);
+	private final Tint TINE_FEATURE_ON_OFF = new Tint(COLOR_FEATURE_ON_OFF_COLOR);
+	public static final Tint COLOR_FEATURE_ON = new Tint(1.0f, 1.0f, 1.0f, 1.0f);
+	private final Tint TINT_FEATURE_ON = new Tint(COLOR_FEATURE_ON);
+	public static final Tint COLOR_LOGO_FADED = new Tint(1.0f, 1.0f, 1.0f, 0.0f);
+	public static final Tint COLOR_LOGO_FULL = new Tint(1.0f, 1.0f, 1.0f, 1.0f);
 	FeatureScreenAssetSystem assetSystem;
 	TagManager tagManager;
 
@@ -71,69 +78,73 @@ public class FeatureScreenSetupSystem extends PassiveSystem {
 		final float scale = Anims.scaleToScreenRounded(0.08f, FeatureScreenAssetSystem.FEATURE_WIDTH);
 		final float iconBorderMargin = scale * FEATURE_BORDER_MARGIN;
 		final float iconOffset = ((scale * FeatureScreenAssetSystem.FEATURE_WIDTH) + iconBorderMargin);
+
+		float cX = Gdx.graphics.getWidth() - iconOffset * ++iconIndex;
+		float cY = iconBorderMargin;
 		final Entity entity = Anims.createAnimAt(world,
-				(int) (Gdx.graphics.getWidth() - iconOffset * ++iconIndex),
-				(int) iconBorderMargin,
+				(int) cX,
+				(int) cY,
 				iconId,
 				scale);
 
 		if (state) {
-			entity.edit()
-					.add(new Color(COLOR_FEATURE_OFF))
-					.add(new Schedule()
-							.wait(0.5f + iconIndex * 0.1f)
-							.add(newFeatureOnColorAnimation(COLOR_FEATURE_OFF, COLOR_FEATURE_ON_OFF_COLOR, 2.0f))
-							.wait((1.0f / 2.0f))
-							.add(newFeatureOnColorAnimation(COLOR_FEATURE_ON_OFF_COLOR, COLOR_FEATURE_ON, 4.0f))
-							.wait((1.0f / 4.0f))
-							.remove(ColorAnimation.class));
+			animateAvailable(cX, cY, entity);
 		} else {
-			entity.edit()
-					.add(new Color(COLOR_FEATURE_OFF))
-					.add(new Schedule()
-							.wait(0.5f + iconIndex * 0.1f)
-							.add(newFeatureOnColorAnimation(COLOR_FEATURE_OFF, COLOR_FEATURE_FADED, 2.0f))
-							.wait((1.0f / 2.0f))
-							.remove(ColorAnimation.class));
+			animateMissing(cX, cY, entity);
 		}
 	}
 
-	private ColorAnimation newFeatureOnColorAnimation(Color colorA, Color colorB, float speed) {
-		return new ColorAnimation(colorA, colorB, new InterpolationStrategy() {
-			@Override
-			public float apply(float v1, float v2, float a) {
-				return Interpolation.linear.apply(v1, v2, a);
-			}
-		}, speed, 1f / speed);
+	private void animateMissing(float cX, float cY, Entity entity) {
+		E.edit(entity)
+				.tint(COLOR_FEATURE_OFF)
+				.schedule(
+						sequence(
+								delay(seconds(0.5f + iconIndex * 0.1f)),
+								moveBetween(cX, -50, cX, cY, 1f, Interpolation.fade)
+						),
+						sequence(
+								delay(seconds(0.5f + iconIndex * 0.1f)),
+								tween(TINT_FEATURE_OFF, TINT_FEATURE_FADED, seconds(2))
+						));
+	}
+
+	private void animateAvailable(float cX, float cY, Entity entity) {
+		E.edit(entity)
+				.tint(COLOR_FEATURE_OFF)
+				.schedule(
+						sequence(
+								delay(seconds(0.5f + iconIndex * 0.1f)),
+								moveBetween(cX, -50, cX, cY, 1f, Interpolation.fade)
+						),
+						sequence(
+								delay(seconds(0.5f + iconIndex * 0.1f)),
+								tween(TINT_FEATURE_OFF, TINE_FEATURE_ON_OFF, seconds(2)),
+								tween(TINE_FEATURE_ON_OFF, TINT_FEATURE_ON, seconds(2))
+						));
 	}
 
 	public void addLogo() {
 
 		// approximate percentage of screen size with logo. Use rounded numbers to keep the logo crisp.
 
+		float zoom = Anims.scaleToScreenRounded(0.8f, FeatureScreenAssetSystem.LOGO_WIDTH);
 		final Entity entity = Anims.createCenteredAt(world,
 				FeatureScreenAssetSystem.LOGO_WIDTH,
 				FeatureScreenAssetSystem.LOGO_HEIGHT,
 				"logo",
-				Anims.scaleToScreenRounded(0.8f, FeatureScreenAssetSystem.LOGO_WIDTH));
+				zoom);
 
-		entity.edit()
-				.add(new Color(COLOR_LOGO_FADED))
-				.add(new Schedule()
-						.add(newLogoAppearColorAnimation())
-						.wait(0.5f));
-	}
+		E.edit(entity)
+				.tint(COLOR_LOGO_FADED)
+				.schedule(
+						scaleBetween(zoom * 2, zoom, 2f, Interpolation.bounceOut),
+						tween(new Tint(COLOR_LOGO_FADED), new Tint(COLOR_LOGO_FULL), 2f, Interpolation.fade)
+				);
 
-	private ColorAnimation newLogoAppearColorAnimation() {
-		return new ColorAnimation(COLOR_LOGO_FADED, COLOR_LOGO_FULL, new InterpolationStrategy() {
-			@Override
-			public float apply(float v1, float v2, float a) {
-				return Interpolation.fade.apply(v1, v2, a);
-			}
-		}, 2f, 0.5f);
 	}
 
 	public static final int DISPLAY_SECONDS = 2;
+
 
 	private void scheduleTransitionToGameScreen() {
 		world.getSystem(TransitionSystem.class).transition(GameScreen.class, DISPLAY_SECONDS);
