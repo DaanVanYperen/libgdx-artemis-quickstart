@@ -1,14 +1,14 @@
 buildscript {
     ext {
         appName = 'libgdx-artemis-quickstart'
-        appVersion = '1.4'
+        appVersion = '1.5'
 
-        gdxVersion = '1.7.0'
-        artemisVersion = '1.0.1'
-        artemisContribVersion = '1.1.0'
-        roboVMVersion = '1.8.0'
+        gdxVersion = '1.9.4'
+        artemisVersion = '2.0.0'
+        artemisContribVersion = '1.2.0'
+        roboVMVersion = '2.2.0'
         //box2DLightsVersion = '1.4'
-        //aiVersion = '1.6.0'
+        //aiVersion = '1.8.0'
     }
 
     repositories {
@@ -21,8 +21,8 @@ buildscript {
 
     dependencies {
         classpath 'de.richsource.gradle.plugins:gwt-gradle-plugin:0.6'
-        classpath 'com.android.tools.build:gradle:1.2.3'
-        classpath "org.robovm:robovm-gradle-plugin:$roboVMVersion"
+        classpath 'com.android.tools.build:gradle:1.5.0'
+        classpath 'com.mobidevelop.robovm:robovm-gradle-plugin:2.2.0'
 
         // lib for artemis-odb weaving.
         // see https://github.com/junkdog/artemis-odb/wiki/Bytecode-weaving
@@ -53,13 +53,13 @@ project(":desktop") {
         compile "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
 
-        // Optional LibGDX Modules
+// Optional LibGDX Modules
 //        compile "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
+//        compile "com.badlogicgames.gdx:gdx-tools:$gdxVersion"
 //        compile "com.badlogicgames.gdx:gdx-controllers-desktop:$gdxVersion"
 //        compile "com.badlogicgames.gdx:gdx-controllers-platform:$gdxVersion:natives-desktop"
-//        compile "com.badlogicgames.gdx:gdx-tools:$gdxVersion"
-//        compile "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-desktop"
 //        compile "com.badlogicgames.gdx:gdx-bullet-platform:$gdxVersion:natives-desktop"
+//        compile "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-desktop"
     }
 }
 
@@ -75,24 +75,32 @@ project(":android") {
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi-v7a"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86"
 
-        // Optional LibGDX Modules
-//      compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
-//      natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-armeabi"
-//      natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-armeabi-v7a"
-//      natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-x86"
-//      compile "com.badlogicgames.gdx:gdx-controllers:$gdxVersion"
-//      compile "com.badlogicgames.gdx:gdx-controllers-android:$gdxVersion"
-//      compile "com.badlogicgames.gdx:gdx-ai:$aiVersion"
-//      compile "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
-//      natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-armeabi"
-//      natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-armeabi-v7a"
-//      natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-x86"
-//      compile "com.badlogicgames.gdx:gdx-bullet:$gdxVersion"
-//      natives "com.badlogicgames.gdx:gdx-bullet-platform:$gdxVersion:natives-armeabi"
-//      natives "com.badlogicgames.gdx:gdx-bullet-platform:$gdxVersion:natives-armeabi-v7a"
-//      natives "com.badlogicgames.gdx:gdx-bullet-platform:$gdxVersion:natives-x86"
-//      compile "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion"
-//      compile "com.badlogicgames.gdx:gdx-ai:$aiVersion"
+// Optional LibGDX Modules
+//        natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-arm64-v8a"
+//        natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86_64"
+//        compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
+//        natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-armeabi"
+//        natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-armeabi-v7a"
+//        natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-arm64-v8a"
+//        natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-x86"
+//        natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-x86_64"
+//        compile "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion"
+//        compile "com.badlogicgames.gdx:gdx-ai:$aiVersion"
+//        compile "com.badlogicgames.gdx:gdx-controllers:$gdxVersion"
+//        compile "com.badlogicgames.gdx:gdx-controllers-android:$gdxVersion"
+//        compile "com.badlogicgames.gdx:gdx-bullet:$gdxVersion"
+//        natives "com.badlogicgames.gdx:gdx-bullet-platform:$gdxVersion:natives-armeabi"
+//        natives "com.badlogicgames.gdx:gdx-bullet-platform:$gdxVersion:natives-armeabi-v7a"
+//        natives "com.badlogicgames.gdx:gdx-bullet-platform:$gdxVersion:natives-arm64-v8a"
+//        natives "com.badlogicgames.gdx:gdx-bullet-platform:$gdxVersion:natives-x86"
+//        natives "com.badlogicgames.gdx:gdx-bullet-platform:$gdxVersion:natives-x86_64"
+//        compile "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
+//        natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-armeabi"
+//        natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-armeabi-v7a"
+//        natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-arm64-v8a"
+//        natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-x86"
+//        natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-x86_64"
+
     }
 }
 
@@ -104,16 +112,16 @@ project(":ios") {
 
     dependencies {
         compile project(":core")
-        compile "org.robovm:robovm-rt:$roboVMVersion"
-        compile "org.robovm:robovm-cocoatouch:$roboVMVersion"
+        compile "com.mobidevelop.robovm:robovm-rt:$roboVMVersion"
+        compile "com.mobidevelop.robovm:robovm-cocoatouch:$roboVMVersion"
         compile "com.badlogicgames.gdx:gdx-backend-robovm:$gdxVersion"
-        // Optional LibGDX Modules
+
+// Optional LibGDX Modules
 //        compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-ios"
 //        compile "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-ios"
+//        compile "com.badlogicgames.gdx:gdx-bullet-platform:$gdxVersion:natives-ios"
 //        compile "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-ios"
 
-
-//        compile "com.badlogicgames.gdx:gdx-bullet-platform:$gdxVersion:natives-ios"
     }
 }
 
@@ -128,15 +136,14 @@ project(":html") {
         compile "com.badlogicgames.gdx:gdx:$gdxVersion:sources"
         compile "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion:sources"
 
-        // Optional LibGDX Modules
-//      compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion:sources"
-//      compile "com.badlogicgames.gdx:gdx-box2d-gwt:$gdxVersion:sources"
-//      compile "com.badlogicgames.gdx:gdx-controllers:$gdxVersion:sources"
-//      compile "com.badlogicgames.gdx:gdx-controllers-gwt:$gdxVersion"
-//      compile "com.badlogicgames.gdx:gdx-controllers-gwt:$gdxVersion:sources"
-
-//      compile "com.badlogicgames.gdx:gdx-ai:$aiVersion:sources"
-//      compile "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion:sources"
+// Optional LibGDX Modules
+//        compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion:sources"
+//        compile "com.badlogicgames.gdx:gdx-box2d-gwt:$gdxVersion:sources"
+//        compile "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion:sources"
+//        compile "com.badlogicgames.gdx:gdx-ai:$aiVersion:sources"
+//        compile "com.badlogicgames.gdx:gdx-controllers:$gdxVersion:sources"
+//        compile "com.badlogicgames.gdx:gdx-controllers-gwt:$gdxVersion"
+//        compile "com.badlogicgames.gdx:gdx-controllers-gwt:$gdxVersion:sources"
 
         // artemis-odb
         compile "net.onedaybeard.artemis:artemis-odb-gwt:$artemisVersion"
@@ -167,21 +174,17 @@ project(":core") {
     dependencies {
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
 
-        // Optional LibGDX Modules
-//      compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
-//      compile "com.badlogicgames.gdx:gdx-controllers:$gdxVersion"
-//      compile "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion"
-//      compile "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
-//      compile "com.badlogicgames.gdx:gdx-bullet:$gdxVersion"
-//      compile "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion"
-//      compile "com.badlogicgames.gdx:gdx-ai:$aiVersion"
+// Optional LibGDX Modules
+//        compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
+//        compile "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion"
+//        compile "com.badlogicgames.gdx:gdx-ai:$aiVersion"
+//        compile "com.badlogicgames.gdx:gdx-controllers:$gdxVersion"
+//        compile "com.badlogicgames.gdx:gdx-bullet:$gdxVersion"
+//        compile "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
 
         // Artemis-odb
         compile "net.onedaybeard.artemis:artemis-odb:$artemisVersion"
         compile "net.onedaybeard.artemis:artemis-odb-serializer-json-libgdx:$artemisVersion"
-
-        // Artemis-odb annotation processor (see https://github.com/junkdog/artemis-odb/wiki/EntityFactory)
-        provided "net.onedaybeard.artemis:artemis-odb-processor:$artemisVersion"
 
         // Artemis-odb bonus functionality (systems, events, components).
         compile "net.mostlyoriginal.artemis-odb:contrib-core:$artemisContribVersion"
