@@ -2,7 +2,7 @@ language: android
 android:
   components:
     - android-20
-    - build-tools-24.0.0
+    - build-tools-20.0.0
 
 before_install:
   - chmod +x gradlew
