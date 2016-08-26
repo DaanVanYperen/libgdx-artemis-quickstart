@@ -60,6 +60,18 @@ Gradle plugin requires Gradle 2.2+!
 
 `gradlew generateMatrix`
 
+### GWT build speed
+
+GWT default build speed is horribly slow (10-20 minutes).
+
+Because of this, `enableClosureCompiler` is disabled by default. Re-enable
+it in `html/build.gradle` to shrink your game a bit at the cost of 300%
+compile time.
+
+To speed up your builds further you can chose to limit the target browsers
+by adding a tag to `GdxDefinition.gwt.xml`.
+`<set-property name="user.agent" value="safari" />`
+
 ### GWT and Reflection
 
 GWT lacks reflection so the build process creates a reflection cache. 
