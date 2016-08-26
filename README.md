@@ -31,10 +31,8 @@ Splash screen icons show available features:
 
 | Icon                  | Platform supports/feature active
 |-----------------------|----------------------------------
-| Three big squares     | @PackedWeaver
 | Tiny squares in a box | @PooledWeaver
 | Linked squares        | Hotspot optimization
-| Factory icon          | ODB Factories
 
 ### Platform cheat sheet
 
@@ -49,7 +47,7 @@ Splash screen icons show available features:
 
 ### Library Versions
 
-LibGDX 1.9.4, Artemis-odb 2.0.0, Artemis-odb-contrib 1.2.0
+LibGDX 1.9.4, Artemis-odb 2.0.0, Artemis-odb-contrib 1.2.1
 
 Alter library versions and enable gdx modules in /build.gradle
 
