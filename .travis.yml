@@ -1,6 +1,7 @@
 language: android
 android:
   components:
+    - android-24
     - build-tools-24.0.0
 
 before_install:
