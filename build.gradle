@@ -149,6 +149,7 @@ project(":html") {
         compile "net.onedaybeard.artemis:artemis-odb-gwt:$artemisVersion"
         compile "net.onedaybeard.artemis:artemis-odb-gwt:$artemisVersion:sources"
         compile "net.onedaybeard.artemis:artemis-odb:$artemisVersion:sources"
+        compile "net.onedaybeard.artemis:artemis-odb-serializer:$artemisVersion:sources"
         compile "net.onedaybeard.artemis:artemis-odb-serializer-json-libgdx:$artemisVersion:sources"
 
         // Artemis-odb bonus functionality (systems, events, components).
