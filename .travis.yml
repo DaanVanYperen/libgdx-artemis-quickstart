@@ -7,4 +7,7 @@ android:
 before_install:
   - chmod +x gradlew
 
+# Extend compile timeout to 20 minutes; gwt easily takes 10+.
+install: travis_wait mvn install
+
 script: ./gradlew clean build
