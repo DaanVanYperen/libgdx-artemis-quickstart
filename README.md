@@ -31,10 +31,8 @@ Splash screen icons show available features:
 
 | Icon                  | Platform supports/feature active
 |-----------------------|----------------------------------
-| Three big squares     | @PackedWeaver
 | Tiny squares in a box | @PooledWeaver
 | Linked squares        | Hotspot optimization
-| Factory icon          | ODB Factories
 
 ### Platform cheat sheet
 
@@ -49,7 +47,7 @@ Splash screen icons show available features:
 
 ### Library Versions
 
-LibGDX 1.7.0, Artemis-odb 1.0.0, Artemis-odb-contrib 1.1.0
+LibGDX 1.9.4, Artemis-odb 2.0.0, Artemis-odb-contrib 1.2.1
 
 Alter library versions and enable gdx modules in /build.gradle
 
@@ -61,6 +59,18 @@ Gradle plugin requires Gradle 2.2+!
 ### Generating component/system matrix
 
 `gradlew generateMatrix`
+
+### GWT build speed
+
+GWT default build speed is horribly slow (10-20 minutes).
+
+Because of this, `enableClosureCompiler` is disabled by default. Re-enable
+it in `html/build.gradle` to shrink your game a bit at the cost of 300%
+compile time.
+
+To speed up your builds further you can chose to limit the target browsers
+by adding a tag to `GdxDefinition.gwt.xml`.
+`<set-property name="user.agent" value="safari" />`
 
 ### GWT and Reflection
 

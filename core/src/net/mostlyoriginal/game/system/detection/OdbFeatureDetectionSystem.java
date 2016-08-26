@@ -7,7 +7,6 @@ import com.artemis.utils.EntityBuilder;
 import com.artemis.utils.reflect.ClassReflection;
 import com.badlogic.gdx.Gdx;
 import net.mostlyoriginal.game.component.detection.OdbFeatureComponent;
-import net.mostlyoriginal.game.component.detection.PackDetectionComponent;
 import net.mostlyoriginal.game.component.detection.PoolDetectionComponent;
 
 /**
@@ -28,24 +27,13 @@ public class OdbFeatureDetectionSystem extends BaseSystem {
 		new EntityBuilder(world).with(features).tag(FEATURES_TAG).build();
 
 		// detect packing based on reflection.
-		features.isPacked = isPackedWeavingEnabled();
+		features.isPacked = false;
 		features.isPooled = isPooledWeavingEnabled();
 		features.isHotspotOptimization = isHotspotOptimizationEnabled();
-		features.isFactory = isFactoryCreationEnabled();
+		features.isFactory = false;
 
-		debugFeature("Struct Emulation ...... ", features.isPacked);
 		debugFeature("Pooling ............... ", features.isPooled);
 		debugFeature("Hotspot Optimization .. ", features.isHotspotOptimization);
-		debugFeature("Factory ............... ", features.isFactory);
-	}
-
-	private boolean isFactoryCreationEnabled() {
-		try {
-			return ArtemisUtils.createFactory(world, FactoryTestEntity.class) != null;
-		} catch ( Exception e ) {
-			// exceptions indicate factories are not being implemented by entity factory.
-			return false;
-		}
 	}
 
 	private boolean isHotspotOptimizationEnabled() {
@@ -57,11 +45,6 @@ public class OdbFeatureDetectionSystem extends BaseSystem {
 	private boolean isPooledWeavingEnabled() {
 		// pooled components will subclass PooledComponent.
 		return ClassReflection.isAssignableFrom(PooledComponent.class, PoolDetectionComponent.class);
-	}
-
-	private boolean isPackedWeavingEnabled() {
-		// packed components will subclass PackedComponent.
-		return ClassReflection.isAssignableFrom(PackedComponent.class, PackDetectionComponent.class);
 	}
 
 	private void debugFeature(final String feature, boolean state) {
