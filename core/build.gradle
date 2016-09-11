@@ -1,9 +1,14 @@
 apply plugin: "java"
 apply plugin: "artemis"
+apply plugin: "artemis-fluid"
+
+ext {
+    fluidOutputDir = file("$buildDir/generated-sources/fluid/")
+}
 
 sourceCompatibility = 1.7
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
-sourceSets.main.java.srcDirs = ["src/"]
+sourceSets.main.java.srcDirs = ["src/",fluidOutputDir]
 eclipse.project {
     name = appName + "-core"
 }
@@ -14,6 +19,20 @@ weave {
     enablePooledWeaving = true
     optimizeEntitySystems = true
     classesDir = sourceSets.main.output.classesDir
+}
+
+fluid {
+    generatedSourcesDirectory = fluidOutputDir;
+    classpath = sourceSets.main.compileClasspath
+}
+compileJava.dependsOn fluid
+
+idea.module {
+    excludeDirs -= file("$buildDir")
+    excludeDirs += file("$buildDir/classes")
+    excludeDirs += file("$buildDir/dependency-cache")
+    excludeDirs += file("$buildDir/libs")
+    excludeDirs += file("$buildDir/tmp")
 }
 
 classes.finalizedBy weave

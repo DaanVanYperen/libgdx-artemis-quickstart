@@ -5,6 +5,8 @@ import com.artemis.annotations.Wire;
 import net.mostlyoriginal.api.system.core.PassiveSystem;
 import net.mostlyoriginal.game.util.Anims;
 
+import static com.artemis.E.E;
+
 /**
  * @author Daan van Yperen
  */
@@ -15,6 +17,11 @@ public class GameScreenSetupSystem extends PassiveSystem {
 
 	@Override
 	protected void initialize() {
+
+		E(world.create())
+				.pos()
+				.anim()
+				.renderable();
 
 		Anims.createCenteredAt(world,
 				GameScreenAssetSystem.DANCING_MAN_WIDTH,

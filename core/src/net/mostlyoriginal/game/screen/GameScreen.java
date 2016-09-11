@@ -1,5 +1,6 @@
 package net.mostlyoriginal.game.screen;
 
+import com.artemis.SuperMapper;
 import com.artemis.World;
 import com.artemis.WorldConfigurationBuilder;
 import com.badlogic.gdx.graphics.Color;
@@ -28,6 +29,7 @@ public class GameScreen extends WorldScreen {
 				.dependsOn(OperationsPlugin.class)
 				.with(
 						// Replace with your own systems!
+						new SuperMapper(),
 						new CameraSystem(1),
 						new ClearScreenSystem(Color.valueOf(BACKGROUND_COLOR_HEX)),
 						new GameScreenAssetSystem(),

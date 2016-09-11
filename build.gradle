@@ -4,7 +4,7 @@ buildscript {
         appVersion = '1.5'
 
         gdxVersion = '1.9.4'
-        artemisVersion = '2.0.0'
+        artemisVersion = '2.1.0-SNAPSHOT'
         artemisContribVersion = '1.2.1'
         roboVMVersion = '2.2.0'
         //box2DLightsVersion = '1.4'
@@ -27,6 +27,9 @@ buildscript {
         // lib for artemis-odb weaving.
         // see https://github.com/junkdog/artemis-odb/wiki/Bytecode-weaving
         classpath "net.onedaybeard.artemis:artemis-odb-gradle-plugin:$artemisVersion"
+
+        // lib for artemis-odb fluid.
+        classpath "net.onedaybeard.artemis:artemis-fluid-gradle-plugin:$artemisVersion"
     }
 }
 
@@ -160,6 +163,10 @@ project(":html") {
     }
 }
 
+project(":components") {
+    apply plugin: "java"
+}
+
 project(":core") {
     apply plugin: "java"
 
@@ -173,6 +180,7 @@ project(":core") {
     }
 
     dependencies {
+        compile project(":components")
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
 
 // Optional LibGDX Modules

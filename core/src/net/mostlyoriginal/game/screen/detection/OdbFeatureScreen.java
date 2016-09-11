@@ -1,5 +1,6 @@
 package net.mostlyoriginal.game.screen.detection;
 
+import com.artemis.SuperMapper;
 import com.artemis.World;
 import com.artemis.WorldConfigurationBuilder;
 import com.artemis.managers.TagManager;
@@ -31,6 +32,7 @@ public class OdbFeatureScreen extends WorldScreen {
 				.dependsOn(OperationsPlugin.class)
 				.with(WorldConfigurationBuilder.Priority.HIGH,
 						// supportive
+						new SuperMapper(),
 						new TagManager(),
 						new CameraSystem(1),
 						new FeatureScreenAssetSystem(),
