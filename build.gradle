@@ -219,7 +219,7 @@ project(":matrix") {
 
     dependencies {
         compile project(":core")
-        compile "net.onedaybeard.ecs:matrix-cli:0.1.1"
+        compile "net.onedaybeard.ecs:matrix-cli:0.2.0"
     }
 
     task generateMatrix(type: JavaExec) {

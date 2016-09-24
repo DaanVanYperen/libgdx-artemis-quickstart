@@ -22,25 +22,23 @@ import net.mostlyoriginal.plugin.ProfilerPlugin;
  */
 public class GameScreen extends WorldScreen {
 
-	public static final String BACKGROUND_COLOR_HEX = "969291";
+    public static final String BACKGROUND_COLOR_HEX = "969291";
 
-	@Override
-	protected World createWorld() {
-		RenderBatchingSystem renderBatchingSystem;
-		return new World(new WorldConfigurationBuilder()
-				.dependsOn(EntityLinkManager.class)
-				.dependsOn(ProfilerPlugin.class)
-				.dependsOn(OperationsPlugin.class)
-				.with(
-						// Replace with your own systems!
-						new SuperMapper(),
-						new CameraSystem(1),
-						new ClearScreenSystem(Color.valueOf(BACKGROUND_COLOR_HEX)),
-						new GameScreenAssetSystem(),
-						new GameScreenSetupSystem(),
-						renderBatchingSystem = new RenderBatchingSystem(),
-						new AnimRenderSystem(renderBatchingSystem)
-				).build());
-	}
+    @Override
+    protected World createWorld() {
+        RenderBatchingSystem renderBatchingSystem;
+        return new World(new WorldConfigurationBuilder()
+                .dependsOn(EntityLinkManager.class, ProfilerPlugin.class, OperationsPlugin.class)
+                .with(
+                        // Replace with your own systems!
+                        new SuperMapper(),
+                        new CameraSystem(1),
+                        new ClearScreenSystem(Color.valueOf(BACKGROUND_COLOR_HEX)),
+                        new GameScreenAssetSystem(),
+                        new GameScreenSetupSystem(),
+                        renderBatchingSystem = new RenderBatchingSystem(),
+                        new AnimRenderSystem(renderBatchingSystem)
+                ).build());
+    }
 
 }
