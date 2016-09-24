@@ -22,20 +22,30 @@ weave {
 }
 
 fluid {
-    generatedSourcesDirectory = fluidOutputDir;
+    generatedSourcesDirectory = fluidOutputDir
     classpath = sourceSets.main.compileClasspath
+
+    // optional parameters. Uncomment to activate.
+    // preferences.prefixComponentGetter = "get" // prefix for Pos E::[get]pos()
+    // preferences.prefixComponentCreate = "" // prefix for E E::[]pos()
+    // preferences.prefixComponentHas = "has" // prefix for boolean E::[has]Pos()
+    // preferences.prefixComponentRemove = "remove" // prefix for E E::[remove]Pos()
+    // preferences.generateTagMethods = true // add tag convenience methods to E.
+    // preferences.generateGroupMethods = true // add group convenience methods to E.
+    // preferences.generateBooleanComponentAccessors = true // Generate boolean accessors for flag components?
+    // preferences.swallowGettersWithParameters = false // global setting. overridden by @Fluid annotation.
 }
 compileJava.dependsOn fluid
+classes.finalizedBy weave
 
 idea.module {
+    generatedSourceDirs += fluidOutputDir
     excludeDirs -= file("$buildDir")
     excludeDirs += file("$buildDir/classes")
     excludeDirs += file("$buildDir/dependency-cache")
     excludeDirs += file("$buildDir/libs")
     excludeDirs += file("$buildDir/tmp")
 }
-
-classes.finalizedBy weave
 
 dependencies {
 }

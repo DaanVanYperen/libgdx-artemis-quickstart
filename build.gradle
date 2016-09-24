@@ -2,10 +2,9 @@ buildscript {
     ext {
         appName = 'libgdx-artemis-quickstart'
         appVersion = '1.5'
-
         gdxVersion = '1.9.4'
         artemisVersion = '2.1.0-SNAPSHOT'
-        artemisContribVersion = '1.2.1'
+        artemisContribVersion = '2.0.0-SNAPSHOT'
         roboVMVersion = '2.2.0'
         //box2DLightsVersion = '1.4'
         //aiVersion = '1.8.0'
@@ -160,11 +159,22 @@ project(":html") {
         compile "net.mostlyoriginal.artemis-odb:contrib-jam:$artemisContribVersion:sources"
         compile "net.mostlyoriginal.artemis-odb:contrib-eventbus:$artemisContribVersion:sources"
         compile "net.mostlyoriginal.artemis-odb:contrib-plugin-operations:$artemisContribVersion:sources"
+        compile "net.mostlyoriginal.artemis-odb:contrib-plugin-profiler:$artemisContribVersion:sources"
     }
 }
 
 project(":components") {
     apply plugin: "java"
+
+    dependencies {
+        // components to expose
+        compile "net.mostlyoriginal.artemis-odb:contrib-core:$artemisContribVersion"
+        compile "net.mostlyoriginal.artemis-odb:contrib-jam:$artemisContribVersion"
+
+        compile "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion"
+        compile "com.badlogicgames.gdx:gdx:$gdxVersion:sources"
+        compile "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion:sources"
+    }
 }
 
 project(":core") {
@@ -200,6 +210,7 @@ project(":core") {
         compile "net.mostlyoriginal.artemis-odb:contrib-jam:$artemisContribVersion"
         compile "net.mostlyoriginal.artemis-odb:contrib-eventbus:$artemisContribVersion"
         compile "net.mostlyoriginal.artemis-odb:contrib-plugin-operations:$artemisContribVersion"
+        compile "net.mostlyoriginal.artemis-odb:contrib-plugin-profiler:$artemisContribVersion"
     }
 }
 

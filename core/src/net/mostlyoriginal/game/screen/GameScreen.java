@@ -3,6 +3,7 @@ package net.mostlyoriginal.game.screen;
 import com.artemis.SuperMapper;
 import com.artemis.World;
 import com.artemis.WorldConfigurationBuilder;
+import com.artemis.link.EntityLinkManager;
 import com.badlogic.gdx.graphics.Color;
 import net.mostlyoriginal.api.screen.core.WorldScreen;
 import net.mostlyoriginal.api.system.camera.CameraSystem;
@@ -12,6 +13,7 @@ import net.mostlyoriginal.api.system.render.ClearScreenSystem;
 import net.mostlyoriginal.game.system.view.GameScreenAssetSystem;
 import net.mostlyoriginal.game.system.view.GameScreenSetupSystem;
 import net.mostlyoriginal.plugin.OperationsPlugin;
+import net.mostlyoriginal.plugin.ProfilerPlugin;
 
 /**
  * Example main game screen.
@@ -26,6 +28,8 @@ public class GameScreen extends WorldScreen {
 	protected World createWorld() {
 		RenderBatchingSystem renderBatchingSystem;
 		return new World(new WorldConfigurationBuilder()
+				.dependsOn(EntityLinkManager.class)
+				.dependsOn(ProfilerPlugin.class)
 				.dependsOn(OperationsPlugin.class)
 				.with(
 						// Replace with your own systems!

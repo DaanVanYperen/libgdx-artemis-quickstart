@@ -17,18 +17,11 @@ public class GameScreenSetupSystem extends PassiveSystem {
 
 	@Override
 	protected void initialize() {
-
-		E(world.create())
-				.pos()
-				.anim()
-				.renderable();
-
-		Anims.createCenteredAt(world,
+		Anims.createCenteredAt(
 				GameScreenAssetSystem.DANCING_MAN_WIDTH,
 				GameScreenAssetSystem.DANCING_MAN_HEIGHT,
 				"dancingman",
 				Anims.scaleToScreenRoundedHeight(0.3f, GameScreenAssetSystem.DANCING_MAN_HEIGHT));
 
 	}
-
 }

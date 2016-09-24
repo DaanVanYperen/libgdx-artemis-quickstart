@@ -9,6 +9,8 @@ import com.badlogic.gdx.Gdx;
 import net.mostlyoriginal.game.component.detection.OdbFeatureComponent;
 import net.mostlyoriginal.game.component.detection.PoolDetectionComponent;
 
+import static com.artemis.E.*;
+
 /**
  * Detect which odb weaving features have been applied.
  *
@@ -23,8 +25,8 @@ public class OdbFeatureDetectionSystem extends BaseSystem {
 	protected void initialize() {
 		super.initialize();
 
-		OdbFeatureComponent features = new OdbFeatureComponent();
-		new EntityBuilder(world).with(features).tag(FEATURES_TAG).build();
+		OdbFeatureComponent features =
+				E().odbFeatureComponent().tag(FEATURES_TAG).getOdbFeatureComponent();
 
 		// detect packing based on reflection.
 		features.isPacked = false;

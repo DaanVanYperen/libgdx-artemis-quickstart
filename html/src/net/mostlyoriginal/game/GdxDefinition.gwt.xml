@@ -5,6 +5,7 @@
     <inherits name='com.badlogic.gdx.backends.gdx_backends_gwt'/>
     <inherits name='com.artemis.backends.artemis_backends_gwt'/>
     <inherits name='com.artemis-json-libgdx'/>
+    <inherits name='net.mostlyoriginal.ContribPluginProfiler' />
     <inherits name='net.mostlyoriginal.ContribPluginOperations'/>
     <inherits name='net.mostlyoriginal.ContribEventBus'/>
     <inherits name='net.mostlyoriginal.ContribJam'/>
@@ -29,6 +30,7 @@
     <extend-configuration-property name="gdx.reflect.include" value="net.mostlyoriginal.game.screen"/>
     <extend-configuration-property name="gdx.reflect.include" value="net.mostlyoriginal.api"/>
 
+    <inherits name='GdxArtemisComponents'/>
     <inherits name='GdxArtemisGame'/>
     <entry-point class='net.mostlyoriginal.game.client.HtmlLauncher'/>
 
