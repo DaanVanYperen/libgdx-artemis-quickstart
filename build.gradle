@@ -187,6 +187,7 @@ project(":core") {
     sourceSets {
         // run the annotation processor compile time.
         main { compileClasspath += [configurations.provided] }
+        test.java.srcDirs = ["test/"]
     }
 
     dependencies {
@@ -211,6 +212,8 @@ project(":core") {
         compile "net.mostlyoriginal.artemis-odb:contrib-eventbus:$artemisContribVersion"
         compile "net.mostlyoriginal.artemis-odb:contrib-plugin-operations:$artemisContribVersion"
         compile "net.mostlyoriginal.artemis-odb:contrib-plugin-profiler:$artemisContribVersion"
+
+        testCompile "junit:junit:4.12"
     }
 }
 

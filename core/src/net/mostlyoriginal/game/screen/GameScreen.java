@@ -30,8 +30,9 @@ public class GameScreen extends WorldScreen {
         return new World(new WorldConfigurationBuilder()
                 .dependsOn(EntityLinkManager.class, ProfilerPlugin.class, OperationsPlugin.class)
                 .with(
-                        // Replace with your own systems!
                         new SuperMapper(),
+
+                        // Replace with your own systems!
                         new CameraSystem(1),
                         new ClearScreenSystem(Color.valueOf(BACKGROUND_COLOR_HEX)),
                         new GameScreenAssetSystem(),
