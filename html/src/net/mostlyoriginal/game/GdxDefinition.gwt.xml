@@ -24,6 +24,11 @@
     <extend-configuration-property name="artemis.reflect.include" value="net.mostlyoriginal.game.system"/>
     <extend-configuration-property name="artemis.reflect.include" value="net.mostlyoriginal.game.screen"/>
     <extend-configuration-property name="artemis.reflect.include" value="net.mostlyoriginal.api"/>
+    <extend-configuration-property name="artemis.reflect.include" value="com.artemis.SuperMapper"/>
+    <extend-configuration-property name="artemis.reflect.include" value="com.artemis.E"/>
+    <extend-configuration-property name="artemis.reflect.include" value="java.lang.Class"/>
+    <extend-configuration-property name="artemis.reflect.include" value="com.badlogic.gdx.maps.tiled.TiledMap"/>
+    <extend-configuration-property name="artemis.reflect.include" value="com.badlogic.gdx.maps.MapRenderer"/>
 
     <extend-configuration-property name="gdx.reflect.include" value="net.mostlyoriginal.game.component"/>
     <extend-configuration-property name="gdx.reflect.include" value="net.mostlyoriginal.game.system"/>
