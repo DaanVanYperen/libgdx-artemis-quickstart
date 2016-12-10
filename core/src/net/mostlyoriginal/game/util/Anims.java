@@ -1,7 +1,6 @@
 package net.mostlyoriginal.game.util;
 
 import com.artemis.E;
-import com.artemis.World;
 import com.badlogic.gdx.Gdx;
 
 import static com.artemis.E.E;
@@ -39,7 +38,7 @@ public class Anims {
 
 	public static E createAnimAt(int x, int y, String animId, float scale) {
 		return E()
-				.renderable(0)
+				.renderLayer(0)
 				.pos(x, y)
 				.anim(animId)
 				.scale(scale);
