@@ -1,10 +1,11 @@
 buildscript {
     ext {
-        appName = 'libgdx-artemis-quickstart'
-        appVersion = '1.6'
-        gdxVersion = '1.9.4'
-        artemisVersion = '2.1.0'
-        artemisContribVersion = '2.1.0'
+        appName = 'my-game'
+        quickstartVersion = '0.6'
+        appVersion = '0.1'
+        gdxVersion = '1.9.6-SNAPSHOT'
+        artemisVersion = '2.2.0-SNAPSHOT'
+        artemisContribVersion = '2.2.0-SNAPSHOT'
         roboVMVersion = '2.2.0'
         //box2DLightsVersion = '1.4'
         //aiVersion = '1.8.0'
