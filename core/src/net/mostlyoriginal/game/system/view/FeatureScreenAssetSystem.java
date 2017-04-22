@@ -1,14 +1,7 @@
 package net.mostlyoriginal.game.system.view;
 
-import com.artemis.Entity;
-import com.artemis.World;
 import com.artemis.annotations.Wire;
-import com.artemis.utils.EntityBuilder;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
-import net.mostlyoriginal.api.component.basic.Pos;
-import net.mostlyoriginal.api.component.graphics.Anim;
-import net.mostlyoriginal.api.component.graphics.Renderable;
 import net.mostlyoriginal.api.manager.AbstractAssetSystem;
 
 /**

@@ -1,11 +1,11 @@
 buildscript {
     ext {
-        appName = 'libgdx-artemis-quickstart'
-        appVersion = '1.5'
-
-        gdxVersion = '1.9.4'
-        artemisVersion = '2.0.0'
-        artemisContribVersion = '1.2.1'
+        appName = 'my-game'
+        quickstartVersion = '0.6'
+        appVersion = '0.1'
+        gdxVersion = '1.9.6'
+        artemisVersion = '2.1.0'
+        artemisContribVersion = '2.2.0'
         roboVMVersion = '2.2.0'
         //box2DLightsVersion = '1.4'
         //aiVersion = '1.8.0'
@@ -27,6 +27,9 @@ buildscript {
         // lib for artemis-odb weaving.
         // see https://github.com/junkdog/artemis-odb/wiki/Bytecode-weaving
         classpath "net.onedaybeard.artemis:artemis-odb-gradle-plugin:$artemisVersion"
+
+        // lib for artemis-odb fluid.
+        classpath "net.onedaybeard.artemis:artemis-fluid-gradle-plugin:$artemisVersion"
     }
 }
 
@@ -157,6 +160,21 @@ project(":html") {
         compile "net.mostlyoriginal.artemis-odb:contrib-jam:$artemisContribVersion:sources"
         compile "net.mostlyoriginal.artemis-odb:contrib-eventbus:$artemisContribVersion:sources"
         compile "net.mostlyoriginal.artemis-odb:contrib-plugin-operations:$artemisContribVersion:sources"
+        compile "net.mostlyoriginal.artemis-odb:contrib-plugin-profiler:$artemisContribVersion:sources"
+    }
+}
+
+project(":components") {
+    apply plugin: "java"
+
+    dependencies {
+        // components to expose
+        compile "net.mostlyoriginal.artemis-odb:contrib-core:$artemisContribVersion"
+        compile "net.mostlyoriginal.artemis-odb:contrib-jam:$artemisContribVersion"
+
+        compile "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion"
+        compile "com.badlogicgames.gdx:gdx:$gdxVersion:sources"
+        compile "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion:sources"
     }
 }
 
@@ -170,9 +188,11 @@ project(":core") {
     sourceSets {
         // run the annotation processor compile time.
         main { compileClasspath += [configurations.provided] }
+        test.java.srcDirs = ["test/"]
     }
 
     dependencies {
+        compile project(":components")
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
 
 // Optional LibGDX Modules
@@ -192,6 +212,9 @@ project(":core") {
         compile "net.mostlyoriginal.artemis-odb:contrib-jam:$artemisContribVersion"
         compile "net.mostlyoriginal.artemis-odb:contrib-eventbus:$artemisContribVersion"
         compile "net.mostlyoriginal.artemis-odb:contrib-plugin-operations:$artemisContribVersion"
+        compile "net.mostlyoriginal.artemis-odb:contrib-plugin-profiler:$artemisContribVersion"
+
+        testCompile "junit:junit:4.12"
     }
 }
 
@@ -200,7 +223,7 @@ project(":matrix") {
 
     dependencies {
         compile project(":core")
-        compile "net.onedaybeard.ecs:matrix-cli:0.1.1"
+        compile "net.onedaybeard.ecs:matrix-cli:0.2.0"
     }
 
     task generateMatrix(type: JavaExec) {

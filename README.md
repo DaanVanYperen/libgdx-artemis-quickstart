@@ -11,7 +11,7 @@ game scaffold.
 
 ### When to use this
 
-If you want artemis-odb with weaving, entity factories and 
+If you want artemis-odb with weaving, (optionally) fluid entities and
 LibGDX's gradle, a fork will get you up and running quickly.
 
 I use this as my quickstart for jam games. You are welcome 
@@ -47,13 +47,13 @@ Splash screen icons show available features:
 
 ### Library Versions
 
-LibGDX 1.9.4, Artemis-odb 2.0.0, Artemis-odb-contrib 1.2.1
+LibGDX 1.9.6, artemis-odb 2.1.0, artemis-odb-contrib 2.2.0
 
 Alter library versions and enable gdx modules in /build.gradle
 
 ### Weaving
 
-Weaving and entity factory creation are part of the core build step.
+Weaving and fluid interface creation are part of the core build step.
 
 Gradle plugin requires Gradle 2.2+!
 ### Generating component/system matrix

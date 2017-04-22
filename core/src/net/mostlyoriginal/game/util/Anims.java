@@ -1,8 +1,9 @@
 package net.mostlyoriginal.game.util;
 
-import com.artemis.Entity;
-import com.artemis.World;
+import com.artemis.E;
 import com.badlogic.gdx.Gdx;
+
+import static com.artemis.E.E;
 
 /**
  * @author Daan van Yperen
@@ -27,20 +28,19 @@ public class Anims {
 		return ((Gdx.graphics.getWidth() * percentageOfScreen) / pixelHeight);
 	}
 
-	public static Entity createCenteredAt(World world, int width, int height, String animId, float zoom) {
-		return createAnimAt(world,
+	public static E createCenteredAt(int width, int height, String animId, float zoom) {
+		return createAnimAt(
 				(int)((Gdx.graphics.getWidth() / 2) - ((width / 2) * zoom)),
 				(int)((Gdx.graphics.getHeight() / 2) - ((height / 2) * zoom)),
 				animId,
 				zoom);
 	}
 
-	public static Entity createAnimAt(World world, int x, int y, String animId, float scale) {
-		return E.create(world)
-				.renderable(0)
+	public static E createAnimAt(int x, int y, String animId, float scale) {
+		return E()
+				.renderLayer(0)
 				.pos(x, y)
 				.anim(animId)
-				.scale(scale)
-				.build();
+				.scale(scale);
 	}
 }
