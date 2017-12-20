@@ -3,10 +3,10 @@ buildscript {
         appName = 'my-game'
         quickstartVersion = '0.6'
         appVersion = '0.1'
-        gdxVersion = '1.9.6'
-        artemisVersion = '2.1.0'
-        artemisContribVersion = '2.2.0'
-        roboVMVersion = '2.2.0'
+        gdxVersion = '1.9.9-SNAPSHOT'
+        artemisVersion = '2.2.0-SNAPSHOT'
+        artemisContribVersion = '2.4.0-SNAPSHOT'
+        roboVMVersion = '2.3.1'
         //box2DLightsVersion = '1.4'
         //aiVersion = '1.8.0'
     }
@@ -21,8 +21,8 @@ buildscript {
 
     dependencies {
         classpath 'de.richsource.gradle.plugins:gwt-gradle-plugin:0.6'
-        classpath 'com.android.tools.build:gradle:1.5.0'
-        classpath 'com.mobidevelop.robovm:robovm-gradle-plugin:2.2.0'
+        classpath 'com.android.tools.build:gradle:2.2.2'
+        classpath 'com.mobidevelop.robovm:robovm-gradle-plugin:2.3.1'
 
         // lib for artemis-odb weaving.
         // see https://github.com/junkdog/artemis-odb/wiki/Bytecode-weaving
@@ -187,7 +187,9 @@ project(":core") {
 
     sourceSets {
         // run the annotation processor compile time.
-        main { compileClasspath += [configurations.provided] }
+        main {
+            compileClasspath += configurations.provided
+        }
         test.java.srcDirs = ["test/"]
     }
 
