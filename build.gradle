@@ -3,7 +3,7 @@ buildscript {
         appName = 'my-game'
         quickstartVersion = '0.6'
         appVersion = '0.1'
-        gdxVersion = '1.9.9-SNAPSHOT'
+        gdxVersion = '1.9.8'
         artemisVersion = '2.2.0-SNAPSHOT'
         artemisContribVersion = '2.4.0-SNAPSHOT'
         roboVMVersion = '2.3.1'
