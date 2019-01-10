@@ -45,7 +45,7 @@ public class TransitionSystem extends EntityProcessingSystem {
     @Override
     protected void process(Entity e) {
         try {
-            game.setScreen(ClassReflection.newInstance(E(e).transitionScreen()));
+            game.setScreen(ClassReflection.newInstance(E(e).getTransition().screen));
         } catch (Exception ex) {
             throw new RuntimeException(ex);
         }

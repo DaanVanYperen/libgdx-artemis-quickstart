@@ -38,7 +38,7 @@ public class Anims {
 
 	public static E createAnimAt(int x, int y, String animId, float scale) {
 		return E()
-				.renderLayer(0)
+				.render(0)
 				.pos(x, y)
 				.anim(animId)
 				.scale(scale);
