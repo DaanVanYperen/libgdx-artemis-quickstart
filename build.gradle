@@ -200,6 +200,8 @@ project(":core") {
     dependencies {
         compile project(":components")
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
+
+        compileOnly "net.onedaybeard.artemis:artemis-fluid-core:$artemisVersion"
         
 // Optional LibGDX Modules
 //        compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
