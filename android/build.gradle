@@ -1,6 +1,6 @@
 android {
     buildToolsVersion "28.0.3"
-    compileSdkVersion 27
+    compileSdkVersion 28
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'
@@ -20,7 +20,7 @@ android {
     defaultConfig {
         applicationId "net.mostlyoriginal.game"
         minSdkVersion 9
-        targetSdkVersion 27
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
     }
