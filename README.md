@@ -41,7 +41,7 @@ Splash screen icons show available features:
 | Desktop         | ✓        | ✓ | `gradlew desktop:run`
 | Android         | ✓        | ✓ | `gradlew android:installDebug android:run`, launch emulator first.
 | iOS             | ✓        | ✓ | `gradlew ios:launchIPhoneSimulator`
-| HTML5/GWT       | -        | ✓ | `gradlew html:superDev`, browse to `http://localhost:8080/html`
+| HTML5/GWT       | -        | ✓ | `gradlew html:superDev`, browse to `http://localhost:8080/index.html`
 
 ✓ supported, - not supported
 

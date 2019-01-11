@@ -1,4 +1,4 @@
-package net.mostlyoriginal.game.android;
+package net.mostlyoriginal.game;
 
 import android.os.Bundle;
 

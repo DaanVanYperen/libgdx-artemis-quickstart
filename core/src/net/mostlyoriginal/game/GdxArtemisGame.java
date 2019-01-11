@@ -6,9 +6,9 @@ import net.mostlyoriginal.game.screen.detection.OdbFeatureScreen;
 public class GdxArtemisGame extends Game {
 
 	private static GdxArtemisGame instance;
-
+	
 	@Override
-	public void create() {
+	public void create () {
 		instance = this;
 		restart();
 	}
@@ -16,7 +16,7 @@ public class GdxArtemisGame extends Game {
 	public void restart() {
 		setScreen(new OdbFeatureScreen());
 	}
-
+	
 	public static GdxArtemisGame getInstance()
 	{
 		return instance;

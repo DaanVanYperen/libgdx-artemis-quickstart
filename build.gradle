@@ -1,35 +1,25 @@
 buildscript {
-    ext {
-        appName = 'my-game'
-        quickstartVersion = '0.7'
-        appVersion = '0.1'
-        gdxVersion = '1.9.9'
-        artemisVersion = '2.2.0'
-        artemisContribVersion = '2.4.0'
-        roboVMVersion = '2.3.1'
-        //box2DLightsVersion = '1.4'
-        //aiVersion = '1.8.0'
-    }
+    
 
     repositories {
         mavenLocal()
         mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
-        maven { url "https://oss.sonatype.org/content/repositories/releases/" }
         jcenter()
+        google()
     }
-
     dependencies {
-        classpath 'de.richsource.gradle.plugins:gwt-gradle-plugin:0.6'
-        classpath 'com.android.tools.build:gradle:2.2.2'
-        classpath 'com.mobidevelop.robovm:robovm-gradle-plugin:2.3.1'
-
+        classpath 'org.wisepersist:gwt-gradle-plugin:1.0.6'
+        classpath 'com.android.tools.build:gradle:3.2.0'
+        classpath 'com.mobidevelop.robovm:robovm-gradle-plugin:2.3.5'
+        
         // lib for artemis-odb weaving.
         // see https://github.com/junkdog/artemis-odb/wiki/Bytecode-weaving
-        classpath "net.onedaybeard.artemis:artemis-odb-gradle-plugin:$artemisVersion"
+        classpath "net.onedaybeard.artemis:artemis-odb-gradle-plugin:2.2.0"
 
         // lib for artemis-odb fluid.
-        classpath "net.onedaybeard.artemis:artemis-fluid-gradle-plugin:$artemisVersion"
+        classpath "net.onedaybeard.artemis:artemis-fluid-gradle-plugin:2.2.0"
     }
 }
 
@@ -37,11 +27,23 @@ allprojects {
     apply plugin: "eclipse"
     apply plugin: "idea"
 
-    version = "$appVersion"
+    version = '1.0'
+    ext {
+        appName = "my-game"
+        quickstartVersion = '0.7'
+        gdxVersion = '1.9.9'
+        roboVMVersion = '2.3.5'
+        artemisVersion = '2.2.0' // update gradle plugins above as well!
+        artemisContribVersion = '2.4.0'
+        //box2DLightsVersion = '1.4'
+        //ashleyVersion = '1.7.0'
+        //aiVersion = '1.8.0'
+    }
 
     repositories {
         mavenLocal()
         mavenCentral()
+        google()
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
         maven { url "https://oss.sonatype.org/content/repositories/releases/" }
     }
@@ -55,14 +57,14 @@ project(":desktop") {
         compile project(":core")
         compile "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
-
 // Optional LibGDX Modules
 //        compile "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
+//        compile "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-desktop"
+//        compile "com.badlogicgames.gdx:gdx-bullet-platform:$gdxVersion:natives-desktop"
 //        compile "com.badlogicgames.gdx:gdx-tools:$gdxVersion"
 //        compile "com.badlogicgames.gdx:gdx-controllers-desktop:$gdxVersion"
 //        compile "com.badlogicgames.gdx:gdx-controllers-platform:$gdxVersion:natives-desktop"
-//        compile "com.badlogicgames.gdx:gdx-bullet-platform:$gdxVersion:natives-desktop"
-//        compile "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-desktop"
+        
     }
 }
 
@@ -76,8 +78,8 @@ project(":android") {
         compile "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi-v7a"
-        natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-arm64-v8a"
+        natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86_64"
 
 // Optional LibGDX Modules
@@ -87,23 +89,23 @@ project(":android") {
 //        natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-arm64-v8a"
 //        natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-x86"
 //        natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-x86_64"
-//        compile "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion"
-//        compile "com.badlogicgames.gdx:gdx-ai:$aiVersion"
-//        compile "com.badlogicgames.gdx:gdx-controllers:$gdxVersion"
-//        compile "com.badlogicgames.gdx:gdx-controllers-android:$gdxVersion"
-//        compile "com.badlogicgames.gdx:gdx-bullet:$gdxVersion"
-//        natives "com.badlogicgames.gdx:gdx-bullet-platform:$gdxVersion:natives-armeabi"
-//        natives "com.badlogicgames.gdx:gdx-bullet-platform:$gdxVersion:natives-armeabi-v7a"
-//        natives "com.badlogicgames.gdx:gdx-bullet-platform:$gdxVersion:natives-arm64-v8a"
-//        natives "com.badlogicgames.gdx:gdx-bullet-platform:$gdxVersion:natives-x86"
-//        natives "com.badlogicgames.gdx:gdx-bullet-platform:$gdxVersion:natives-x86_64"
 //        compile "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
 //        natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-armeabi"
 //        natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-armeabi-v7a"
 //        natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-arm64-v8a"
 //        natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-x86"
 //        natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-x86_64"
-
+//        compile "com.badlogicgames.gdx:gdx-bullet:$gdxVersion"
+//        natives "com.badlogicgames.gdx:gdx-bullet-platform:$gdxVersion:natives-armeabi"
+//        natives "com.badlogicgames.gdx:gdx-bullet-platform:$gdxVersion:natives-armeabi-v7a"
+//        natives "com.badlogicgames.gdx:gdx-bullet-platform:$gdxVersion:natives-arm64-v8a"
+//        natives "com.badlogicgames.gdx:gdx-bullet-platform:$gdxVersion:natives-x86"
+//        natives "com.badlogicgames.gdx:gdx-bullet-platform:$gdxVersion:natives-x86_64"
+//        compile "com.badlogicgames.gdx:gdx-controllers:$gdxVersion"
+//        compile "com.badlogicgames.gdx:gdx-controllers-android:$gdxVersion"
+//        compile "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion"
+//        compile "com.badlogicgames.gdx:gdx-ai:$aiVersion"
+        
     }
 }
 
@@ -111,7 +113,6 @@ project(":ios") {
     apply plugin: "java"
     apply plugin: "robovm"
 
-    configurations { natives }
 
     dependencies {
         compile project(":core")
@@ -122,9 +123,9 @@ project(":ios") {
 // Optional LibGDX Modules
 //        compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-ios"
 //        compile "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-ios"
-//        compile "com.badlogicgames.gdx:gdx-bullet-platform:$gdxVersion:natives-ios"
 //        compile "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-ios"
-
+//        compile "com.badlogicgames.gdx:gdx-bullet-platform:$gdxVersion:natives-ios"
+        
     }
 }
 
@@ -135,34 +136,37 @@ project(":html") {
 
     dependencies {
         compile project(":core")
-        compile "com.badlogicgames.gdx:gdx:$gdxVersion:sources"
         compile "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion"
+        compile "com.badlogicgames.gdx:gdx:$gdxVersion:sources"
         compile "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion:sources"
 
 // Optional LibGDX Modules
 //        compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion:sources"
 //        compile "com.badlogicgames.gdx:gdx-box2d-gwt:$gdxVersion:sources"
-//        compile "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion:sources"
-//        compile "com.badlogicgames.gdx:gdx-ai:$aiVersion:sources"
 //        compile "com.badlogicgames.gdx:gdx-controllers:$gdxVersion:sources"
 //        compile "com.badlogicgames.gdx:gdx-controllers-gwt:$gdxVersion"
 //        compile "com.badlogicgames.gdx:gdx-controllers-gwt:$gdxVersion:sources"
+//        compile "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion:sources"
+//        compile "com.badlogicgames.gdx:gdx-ai:$aiVersion:sources"
 
-        // artemis-odb
+        // artemis-odb core
         compile "net.onedaybeard.artemis:artemis-odb-gwt:$artemisVersion"
         compile "net.onedaybeard.artemis:artemis-odb-gwt:$artemisVersion:sources"
         compile "net.onedaybeard.artemis:artemis-odb:$artemisVersion:sources"
+        
+        // artemis-odb  + serialization
         compile "net.onedaybeard.artemis:artemis-odb-serializer:$artemisVersion:sources"
         compile "net.onedaybeard.artemis:artemis-odb-serializer-json-libgdx:$artemisVersion:sources"
 
-        // Artemis-odb bonus functionality (systems, events, components).
+        // Artemis-odb optional functionality (systems, events, components).
         compile "net.mostlyoriginal.artemis-odb:contrib-core:$artemisContribVersion:sources"
         compile "net.mostlyoriginal.artemis-odb:contrib-jam:$artemisContribVersion:sources"
         compile "net.mostlyoriginal.artemis-odb:contrib-eventbus:$artemisContribVersion:sources"
         compile "net.mostlyoriginal.artemis-odb:contrib-plugin-operations:$artemisContribVersion:sources"
-        compile "net.mostlyoriginal.artemis-odb:contrib-plugin-profiler:$artemisContribVersion:sources"
+        compile "net.mostlyoriginal.artemis-odb:contrib-plugin-profiler:$artemisContribVersion:sources"        
     }
 }
+
 
 project(":components") {
     apply plugin: "java"
@@ -177,9 +181,10 @@ project(":components") {
     }
 }
 
+
 project(":core") {
     apply plugin: "java"
-
+    
     configurations {
         provided
     }
@@ -195,14 +200,14 @@ project(":core") {
     dependencies {
         compile project(":components")
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
-
+        
 // Optional LibGDX Modules
 //        compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
+//        compile "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
+//        compile "com.badlogicgames.gdx:gdx-bullet:$gdxVersion"
+//        compile "com.badlogicgames.gdx:gdx-controllers:$gdxVersion"
 //        compile "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion"
 //        compile "com.badlogicgames.gdx:gdx-ai:$aiVersion"
-//        compile "com.badlogicgames.gdx:gdx-controllers:$gdxVersion"
-//        compile "com.badlogicgames.gdx:gdx-bullet:$gdxVersion"
-//        compile "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
 
         // Artemis-odb
         compile "net.onedaybeard.artemis:artemis-odb:$artemisVersion"
@@ -215,7 +220,7 @@ project(":core") {
         compile "net.mostlyoriginal.artemis-odb:contrib-plugin-operations:$artemisContribVersion"
         compile "net.mostlyoriginal.artemis-odb:contrib-plugin-profiler:$artemisContribVersion"
 
-        testCompile "junit:junit:4.12"
+        testCompile "junit:junit:4.12"        
     }
 }
 

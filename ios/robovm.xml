@@ -34,7 +34,7 @@
     <pattern>org.apache.harmony.security.provider.crypto.CryptoProvider</pattern>
   </forceLinkClasses>
   <libs>
-      <lib>z</lib>
+      <lib>z</lib>   
   </libs>
   <frameworks>
     <framework>UIKit</framework>
