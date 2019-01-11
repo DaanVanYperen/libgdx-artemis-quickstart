@@ -43,6 +43,7 @@ allprojects {
     repositories {
         mavenLocal()
         mavenCentral()
+        jcenter()
         google()
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
         maven { url "https://oss.sonatype.org/content/repositories/releases/" }
@@ -167,7 +168,7 @@ project(":html") {
     }
 }
 
-
+// Put odb components in this project.
 project(":components") {
     apply plugin: "java"
 
@@ -181,7 +182,7 @@ project(":components") {
     }
 }
 
-
+// Game logic and systems
 project(":core") {
     apply plugin: "java"
     
@@ -194,7 +195,6 @@ project(":core") {
         main {
             compileClasspath += configurations.provided
         }
-        test.java.srcDirs = ["test/"]
     }
 
     dependencies {
@@ -222,10 +222,12 @@ project(":core") {
         //compile "net.mostlyoriginal.artemis-odb:contrib-plugin-operations:$artemisContribVersion"
         compile "net.mostlyoriginal.artemis-odb:contrib-plugin-profiler:$artemisContribVersion"
 
-        testCompile "junit:junit:4.12"        
+        testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
+        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
     }
 }
 
+// dependency matrix does not output component usage when using fluid entities.
 project(":matrix") {
     apply plugin: "java"
 
@@ -237,7 +239,7 @@ project(":matrix") {
     task generateMatrix(type: JavaExec) {
         classpath = sourceSets.main.runtimeClasspath
         main = 'com.artemis.cli.CliApplication'
-        args '-c', "$rootProject.projectDir/core/build/classes/main/", '-l', "$rootProject.ext.appName"
+        args '-c', "$rootProject.projectDir\\core\\build\\classes\\java\\main\\", '-l', "$rootProject.ext.appName"
     }
     build.finalizedBy generateMatrix
 }

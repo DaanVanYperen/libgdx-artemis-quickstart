@@ -1,8 +1,8 @@
 package net.mostlyoriginal.game;
 
 import com.artemis.*;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 /**
  * Example tests for your game / systems.
@@ -17,7 +17,7 @@ public class ExampleTest {
         class ExampleSystem extends BaseSystem {
             @Override
             protected void processSystem() {
-                Assert.assertNotNull(E.E());
+                Assertions.assertNotNull(E.E());
             }
         }
 

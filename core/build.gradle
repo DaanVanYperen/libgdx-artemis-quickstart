@@ -9,8 +9,30 @@ ext {
 sourceCompatibility = 1.7
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 sourceSets.main.java.srcDirs = ["src/",fluidOutputDir]
+sourceSets.test.java.srcDirs = ["test/"]
 eclipse.project {
     name = appName + "-core"
+}
+
+test {
+    useJUnitPlatform()
+    failFast=true
+
+    testLogging {
+        // set options for log level LIFECYCLE
+        events "failed"
+        exceptionFormat "short"
+
+        // set options for log level DEBUG
+        debug {
+            events "started", "skipped", "failed"
+            exceptionFormat "full"
+        }
+
+        // remove standard output/error logging from --info builds
+        // by assigning only 'failed' and 'skipped' events
+        info.events = ["failed", "skipped"]
+    }
 }
 
 // artemis-odb: weaving settings.
@@ -18,7 +40,7 @@ weave {
     enableArtemisPlugin = true
     enablePooledWeaving = true
     optimizeEntitySystems = true
-    classesDir = sourceSets.main.output.classesDir
+    classesDir = sourceSets.main.java.outputDir
 }
 
 fluid {
