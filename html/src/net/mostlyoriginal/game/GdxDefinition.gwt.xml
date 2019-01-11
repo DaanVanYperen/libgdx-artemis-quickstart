@@ -5,9 +5,9 @@
     <inherits name='com.artemis.backends.artemis_backends_gwt'/>
     <inherits name='com.artemis-json-libgdx'/>
     <inherits name='net.mostlyoriginal.ContribPluginProfiler' />
-    <inherits name='net.mostlyoriginal.ContribPluginOperations'/>
-    <inherits name='net.mostlyoriginal.ContribEventBus'/>
-    <inherits name='net.mostlyoriginal.ContribJam'/>
+    <!--<inherits name='net.mostlyoriginal.ContribPluginOperations'/>-->
+    <!--<inherits name='net.mostlyoriginal.ContribEventBus'/>-->
+    <!--<inherits name='net.mostlyoriginal.ContribJam'/>-->
 
     <!-- Optional modules. -->
     <!--
@@ -22,6 +22,8 @@
     <extend-configuration-property name="artemis.reflect.include" value="net.mostlyoriginal.game.system"/>
     <extend-configuration-property name="artemis.reflect.include" value="net.mostlyoriginal.game.screen"/>
     <extend-configuration-property name="artemis.reflect.include" value="net.mostlyoriginal.api"/>
+    <extend-configuration-property name="artemis.reflect.include" value="com.artemis.FluidEntityPlugin"/>
+    <extend-configuration-property name="artemis.reflect.include" value="com.artemis.FluidIteratingSystem"/>
     <extend-configuration-property name="artemis.reflect.include" value="com.artemis.SuperMapper"/>
     <extend-configuration-property name="artemis.reflect.include" value="com.artemis.E"/>
     <extend-configuration-property name="artemis.reflect.include" value="java.lang.Class"/>
