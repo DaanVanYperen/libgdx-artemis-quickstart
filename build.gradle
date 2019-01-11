@@ -160,9 +160,9 @@ project(":html") {
 
         // Artemis-odb optional functionality (systems, events, components).
         compile "net.mostlyoriginal.artemis-odb:contrib-core:$artemisContribVersion:sources"
-        compile "net.mostlyoriginal.artemis-odb:contrib-jam:$artemisContribVersion:sources"
-        compile "net.mostlyoriginal.artemis-odb:contrib-eventbus:$artemisContribVersion:sources"
-        compile "net.mostlyoriginal.artemis-odb:contrib-plugin-operations:$artemisContribVersion:sources"
+        //compile "net.mostlyoriginal.artemis-odb:contrib-jam:$artemisContribVersion:sources"
+        //compile "net.mostlyoriginal.artemis-odb:contrib-eventbus:$artemisContribVersion:sources"
+        //compile "net.mostlyoriginal.artemis-odb:contrib-plugin-operations:$artemisContribVersion:sources"
         compile "net.mostlyoriginal.artemis-odb:contrib-plugin-profiler:$artemisContribVersion:sources"        
     }
 }
@@ -173,8 +173,9 @@ project(":components") {
 
     dependencies {
         // components to expose
+        compile "net.onedaybeard.artemis:artemis-odb:$artemisVersion"
         compile "net.mostlyoriginal.artemis-odb:contrib-core:$artemisContribVersion"
-        compile "net.mostlyoriginal.artemis-odb:contrib-jam:$artemisContribVersion"
+        //compile "net.mostlyoriginal.artemis-odb:contrib-jam:$artemisContribVersion"
 
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
     }
@@ -214,9 +215,9 @@ project(":core") {
 
         // Artemis-odb bonus functionality (systems, events, components).
         compile "net.mostlyoriginal.artemis-odb:contrib-core:$artemisContribVersion"
-        compile "net.mostlyoriginal.artemis-odb:contrib-jam:$artemisContribVersion"
-        compile "net.mostlyoriginal.artemis-odb:contrib-eventbus:$artemisContribVersion"
-        compile "net.mostlyoriginal.artemis-odb:contrib-plugin-operations:$artemisContribVersion"
+        //compile "net.mostlyoriginal.artemis-odb:contrib-jam:$artemisContribVersion"
+        //compile "net.mostlyoriginal.artemis-odb:contrib-eventbus:$artemisContribVersion"
+        //compile "net.mostlyoriginal.artemis-odb:contrib-plugin-operations:$artemisContribVersion"
         compile "net.mostlyoriginal.artemis-odb:contrib-plugin-profiler:$artemisContribVersion"
 
         testCompile "junit:junit:4.12"        
