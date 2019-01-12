@@ -108,6 +108,9 @@ gradle-app.setting
 /html/build/
 /ios/build/
 /ios-moe/build/
+/components/build/
+/matrix/build/
+/matrix/matrix.html
 
 ## OS Specific
 .DS_Store
@@ -123,3 +126,5 @@ Thumbs.db
 !/ios-moe/xcode/*.xcodeproj/xcshareddata
 !/ios-moe/xcode/*.xcodeproj/project.pbxproj
 /ios-moe/xcode/native/
+
+/html/webapp/mongoose-5.0.exe
