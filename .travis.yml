@@ -1,11 +1,11 @@
 language: android
 android:
   components:
-    - android-20
-    - build-tools-20.0.0
+    - android-28
+    - build-tools-28.0.3
 
 before_install:
   - chmod +x gradlew
 
 # Extend compile timeout to 30 minutes; gwt easily takes 10+.
-script: travis_wait 30 ./gradlew clean build
+script: travis_wait 30 ./gradlew clean build -x android:validateSigningDebug -x android:packageDebug -x matrix:generateMatrix

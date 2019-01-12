@@ -6,8 +6,7 @@ libgdx-artemis-quickstart
 Quickstart for libgdx artemis-odb based games.
 
 Preconfigured for artemis-odb advanced features. Contains
-a logo screen with artemis feature detection and minimal
-game scaffold.
+minimal game scaffold.s
 
 ### When to use this
 
@@ -19,20 +18,7 @@ to use it for whatever you need.
 
 ### Where to start
 
-Edit `net.mostlyoriginal.game.screen.GameScreen` and start
-adding systems!
-
-Running the game displays a odb feature splash screen,
-before transitioning to your game.
-
-### Feature detection!
-
-Splash screen icons show available features:
-
-| Icon                  | Platform supports/feature active
-|-----------------------|----------------------------------
-| Tiny squares in a box | @PooledWeaver
-| Linked squares        | Hotspot optimization
+Edit `net.mostlyoriginal.game.screen.GameScreen` and start editing!
 
 ### Platform cheat sheet
 
@@ -41,13 +27,13 @@ Splash screen icons show available features:
 | Desktop         | ✓        | ✓ | `gradlew desktop:run`
 | Android         | ✓        | ✓ | `gradlew android:installDebug android:run`, launch emulator first.
 | iOS             | ✓        | ✓ | `gradlew ios:launchIPhoneSimulator`
-| HTML5/GWT       | -        | ✓ | `gradlew html:superDev`, browse to `http://localhost:8080/html`
+| HTML5/GWT       | -        | ✓ | `gradlew html:superDev`, browse to `http://localhost:8080/index.html`
 
 ✓ supported, - not supported
 
 ### Library Versions
 
-LibGDX 1.9.6, artemis-odb 2.1.0, artemis-odb-contrib 2.2.0
+LibGDX 1.9.9, artemis-odb 2.2.0, artemis-odb-contrib 2.4.0
 
 Alter library versions and enable gdx modules in /build.gradle
 
@@ -55,7 +41,7 @@ Alter library versions and enable gdx modules in /build.gradle
 
 Weaving and fluid interface creation are part of the core build step.
 
-Gradle plugin requires Gradle 2.2+!
+Gradle plugin requires Gradle 4.6+!
 ### Generating component/system matrix
 
 `gradlew generateMatrix`
